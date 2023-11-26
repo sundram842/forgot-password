@@ -1,0 +1,5539 @@
+@import "theme-Manager/custom-imports.scss";
+
+/* You can add global styles to this file, and also import other style files */
+@mixin fullwidth {
+  width: 100%;
+}
+
+@mixin fullheight {
+  height: 100%;
+}
+
+@mixin zeromargin {
+  margin: 0px;
+}
+
+@mixin zeropadding {
+  padding: 0px;
+}
+
+html,
+body {
+  @include fullheight;
+  font-family: var(--custom-font) !important;
+}
+
+body {
+  @include zeromargin;
+  @include zeropadding;
+  background-color: var(--color22);
+}
+
+* {
+  box-sizing     : border-box;
+  scroll-behavior: smooth;
+}
+
+/* Saas variables*/
+$radius:4px,
+8px,
+16px,
+32px;
+$shake-distance: 10px;
+$shake-duration: 0.5s;
+/* Saas variables End*/
+
+/*Common Mixins and Slectors Section*/
+
+@mixin flexwithcenter {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+}
+
+@mixin font {
+  font-family: var(--custom-font) !important;
+}
+
+@mixin fullwidth {
+  width: 100%;
+}
+
+@mixin fullheight {
+  height: 100%;
+}
+
+@mixin vpheight {
+  height: 100vh;
+}
+
+@mixin flex {
+  display    : flex;
+  align-items: center;
+}
+
+@mixin imageWraperProps {
+  width              : 40% !important;
+  min-height         : calc(100vh - 88px);
+  background-repeat  : no-repeat;
+  background-size    : cover;
+  background-position: center;
+}
+
+@mixin tableProperties {
+  @include font;
+  table-layout: fixed;
+  @include fullwidth;
+  background-color: var(--color1);
+
+  th {
+    font-size  : nth($font-sizes, 1);
+    font-weight: nth($font-weights, 3);
+    color      : var(--color12);
+  }
+
+  tbody {
+
+    tr,
+    th {
+      color: var(--color2) !important;
+    }
+  }
+}
+
+.customwidth {
+  width: calc(50% - 10px);
+}
+
+.mR {
+  margin-right: 20px !important;
+}
+
+.pullRight {
+  float: right !important;
+}
+
+.pullLeft {
+  float: left !important;
+}
+
+@mixin border-radius($radius) {
+  $prefixes: ("-webkit-", "-moz-", "-ms-", "-o-", "");
+
+  @each $prefix in $prefixes {
+    $property   : if($prefix=="", "border-radius", $prefix + "border-radius");
+    #{$property}: $radius;
+  }
+
+  border-radius        : $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius   : $radius;
+  -ms-border-radius    : $radius;
+  -o-border-radius     : $radius;
+}
+
+@mixin responsivelogo {
+  display      : none;
+  text-align   : center;
+  margin       : 0 auto;
+  max-width    : 90px;
+  max-height   : 90px;
+  margin-bottom: 5px;
+
+  img {
+    @include fullwidth;
+    @include fullheight;
+  }
+}
+
+@mixin responsiveHeader {
+  text-align : center;
+  color      : var(--color7);
+  font-size  : nth($font-sizes, 2);
+  font-weight: nth($font-weights, 5);
+}
+
+@mixin dashboardHeaders {
+  text-transform: capitalize;
+  color         : var(--color7);
+  font-size     : nth($font-sizes, 4);
+  font-weight   : nth($font-weights, 4);
+}
+
+@mixin cardheadingprop {
+  margin     : 0px 0px 6px 0px;
+  font-size  : nth($font-sizes, 7);
+  font-weight: nth($font-weights, 4);
+  color      : var(--color7);
+}
+
+@mixin smallblockprop {
+  margin     : 0px 0px 6px 0px;
+  font-size  : nth($font-sizes, 1);
+  font-weight: nth($font-weights, 3);
+  color      : var(--color12);
+}
+
+@mixin sectionPadding {
+  padding: 22px 100px;
+}
+
+@mixin sectionTitles {
+  font-size     : nth($font-sizes, 6);
+  font-weight   : nth($font-weights, 5);
+  color         : var(--color7);
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  margin        : 0;
+}
+
+@mixin sectionBackbtn {
+  float    : left;
+  border   : 1px solid var(--color13);
+  color    : var(--color7);
+  font-size: nth($font-sizes, 8);
+}
+
+@mixin responsiveTitleWrap {
+  display: block;
+
+  .logoWrap {
+    @include responsivelogo;
+    display: block;
+  }
+
+  .buttonwrap {
+    @include flex;
+    justify-content : space-between;
+    padding         : 13px 16px;
+    background-color: var(--color7);
+    color           : var(--color1);
+
+    .back-btn,
+    .filter-btn {
+      display  : block;
+      color    : var(--color1);
+      max-width: 50px;
+
+      .mat-icon {
+        font-size     : 20px;
+        vertical-align: middle;
+      }
+    }
+
+    .responsiveHeader {
+      text-transform: uppercase;
+      display       : block;
+      letter-spacing: 1.8px;
+      font-weight   : nth($font-weights, -2);
+      font-size     : nth($font-sizes, 2);
+      margin        : 0;
+    }
+  }
+}
+
+@mixin detailsFlexSection {
+  p {
+    @include flex;
+    align-items: flex-start;
+    column-gap : 10px;
+
+    .mat-icon {
+      font-size: ($font-sizes, 4);
+      color    : var(--color16);
+    }
+
+    span {
+      font-size  : nth($font-sizes, 2);
+      color      : var(--color7);
+      font-weight: nth($font-weights, 3);
+    }
+  }
+}
+
+@mixin checkoutContainers {
+  @include border-radius(6px);
+  padding         : 25px;
+  background-color: var(--color1);
+  color           : var(--color7);
+}
+
+@mixin transform($transforms) {
+  transform        : $transforms;
+  -webkit-transform: $transforms;
+  -moz-transform   : $transforms;
+  -ms-transform    : $transforms;
+  -o-transform     : $transforms;
+}
+
+@mixin profileCOntainer {
+  @include border-radius(50%);
+  border          : 1px solid var(--primary-color);
+  background-color: var(--color15);
+  text-transform  : uppercase;
+  font-size       : 33px;
+  font-weight     : nth($font-weights, 4);
+  color           : var(--primary-color);
+  margin          : 0;
+  padding         : 23px;
+  width           : fit-content;
+}
+
+@mixin customRoundedBtn {
+  min-width : 260px;
+  min-height: 50px;
+  @include border-radius(25px);
+  color : var(--color7);
+  border: 1px solid var(--color4);
+
+}
+
+@mixin dialogCloseButton {
+  position     : absolute;
+  top          : 20px;
+  right        : 20px;
+  border       : 1px solid var(--color20);
+  padding      : 4px;
+  border-radius: 50%;
+
+  .mat-icon {
+    font-size: nth($font-sizes, 1);
+  }
+}
+
+@mixin dialogHeader {
+  font-size  : 22px;
+  font-weight: nth($font-weights, 4);
+  color      : var(--color7);
+}
+
+@mixin tabsSectionHeader {
+  .sectionHeader {
+    margin        : 0 0 10px 0;
+    font-size     : 13px;
+    color         : var(--color4);
+    font-weight   : nth($font-weights, 3);
+    text-transform: uppercase;
+    text-align    : left;
+
+  }
+}
+
+@mixin appointmentWraper {
+  border-bottom : 1px solid var(--color13);
+  padding-bottom: 16px;
+  @include flex;
+  align-items  : flex-start;
+  column-gap   : 15px;
+  margin-bottom: 20px;
+  cursor       : pointer;
+
+  .mat-icon {
+    font-size: nth($font-sizes, -3);
+    color    : var(--color4);
+  }
+
+  .nameWrap {
+    .heading {
+      @include cardheadingprop;
+    }
+
+    .smallblock {
+      @include smallblockprop;
+    }
+
+    .resp-statusblock {
+      display: none;
+    }
+  }
+
+  .statusblock {
+    @include flex;
+    column-gap     : 10px;
+    justify-content: space-between;
+    padding-top    : 20px;
+  }
+
+  .responsiveChevron {
+    display: none;
+  }
+}
+
+@mixin twoColoumnLayout {
+  @include flex;
+  column-gap : 50px;
+  align-items: flex-start;
+  @include fullwidth;
+
+  .labels,
+  .contentPart {
+    p {
+      margin: 0 0 18px 0;
+    }
+  }
+
+  .labels {
+    width      : 15%;
+    font-size  : nth($font-sizes, 1);
+    font-weight: nth($font-weights, 3);
+    color      : var(--color12);
+  }
+
+  .contentPart {
+    width      : 65%;
+    font-size  : nth($font-sizes, 1);
+    color      : var(--color7);
+    font-weight: nth($font-weights, 4);
+
+    p {
+      .statusBlock {
+        .reason {
+          display   : block;
+          font-size : 12px;
+          margin-top: 5px;
+          color     : var(--color12);
+        }
+      }
+    }
+  }
+
+}
+
+@mixin responsiveDrawerClose {
+  position: absolute;
+  top     : 8px;
+  left    : 50%;
+  @include transform(translateX(-50%));
+  width           : 50px;
+  height          : 4px;
+  background-color: var(--color16);
+  cursor          : pointer;
+  @include border-radius(16px);
+}
+
+@mixin verifyPopupBtn {
+  @include border-radius(10px);
+  font-size     : nth($font-sizes, 4);
+  color         : var(--color1) !important;
+  font-weight   : nth($font-weights, 4);
+  letter-spacing: 1.2px;
+  margin-bottom : 20px;
+}
+
+@mixin classListWraperReponsive {
+  display: block;
+  padding: 24px 16px;
+
+  .card {
+    padding         : 20px;
+    box-shadow      : var(--dashboard-shadow);
+    background-color: var(--color1);
+    @include border-radius(8px);
+
+    .classWrap {
+      margin-bottom: 8px;
+      .classname {
+        margin     : 0;
+        font-size  : nth($font-sizes, 2);
+        font-weight: nth($font-weights,4);
+        color      : var(--color7);
+      }
+
+      .subtitle {
+        margin    : 0;
+        margin-top: 7px;
+        font-size : nth($font-sizes, -1);
+        color     : var(--color10);
+        span{text-transform:lowercase;}
+      }
+    }
+
+    .scheduleSection {
+      padding-bottom: 15px;
+      border-bottom : 1px solid var(--color14);
+      @include detailsFlexSection;
+    }
+
+    .price {
+      text-align: right;
+      font-size : nth($font-sizes, -2);
+      color     : var(--color7);
+    }
+  }
+}
+
+@mixin flexwithcenter {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+}
+
+@mixin loginWrap {
+  border-radius        : calc(nth($radius, 4) / 2);
+  background-color     : var(--color1);
+  box-shadow           : var(--shadow1);
+  min-width            : 500px;
+  max-height           : 450px;
+  -webkit-border-radius: calc(nth($radius, 4) / 2);
+  -moz-border-radius   : calc(nth($radius, 4) / 2);
+  -ms-border-radius    : calc(nth($radius, 4) / 2);
+  -o-border-radius     : calc(nth($radius, 4) / 2);
+}
+
+@mixin loginSection {
+  @include flexwithcenter;
+  height: 100vh;
+}
+
+@mixin button {
+  @include fullwidth;
+  margin-top: 15px;
+}
+
+@mixin d-i-bloc {
+  display: inline-block;
+}
+
+@mixin textcenter {
+  text-align: center;
+}
+
+@mixin textRight {
+  text-align: right;
+}
+
+@mixin textLeft {
+  text-align: left;
+}
+
+@mixin customWeek {
+  @include border-radius(4px);
+  background-color: var(--color1);
+  border          : 1px solid var(--color4);
+  text-align      : center;
+  font-size       : 10px;
+  font-weight     : nth($font-weights, 3);
+  color           : var(--color12);
+  padding         : 3px 5px;
+  margin-right    : 3px;
+  text-transform  : uppercase;
+}
+
+@mixin responsivedialogAnimate {
+  -webkit-animation: scale-up-ver-bottom 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation        : scale-up-ver-bottom 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@mixin responsiveDialog {
+  position : fixed !important;
+  bottom   : 0;
+  right    : 0;
+  left     : 0;
+  max-width: 100% !important;
+  width    : 100% !important;
+  @include responsivedialogAnimate;
+}
+
+@mixin containersWraper {
+  @include flex;
+  column-gap    : 60px;
+  flex-direction: row;
+  min-width     : fit-content;
+  @include fullwidth;
+  padding-bottom: 20px;
+  overflow-x    : auto;
+  white-space   : nowrap;
+
+  .studentCardWraper {
+    padding         : 25px;
+    background-color: var(--color1);
+    @include border-radius(17px);
+    width: 280px;
+    @include flex;
+    justify-content: center;
+    flex-direction : column;
+    border         : 1px solid var(--color20);
+    cursor         : pointer;
+
+    &:hover {
+      box-shadow: var(--dashboard-shadow);
+    }
+
+    h2 {
+      @include profileCOntainer;
+      margin-bottom: 18px;
+    }
+
+    .nameWrap {
+      text-align   : center;
+      font-size    : 22px;
+      font-weight  : nth($font-weights, 4);
+      color        : var(--color19);
+      margin-bottom: 8px;
+    }
+
+    .ageWrap {
+      text-align   : center;
+      color        : var(--color19);
+      font-size    : nth($font-sizes, 1);
+      font-weight  : nth($font-weights, 3);
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.customWeekSelected {
+  background-color: var(--primary-color) !important;
+  color           : var(--color1) !important;
+}
+
+.customeweekDefault {
+  background-color: var(--color1) !important;
+  color           : var(--color8) !important;
+}
+
+@mixin communicationDetails {
+  .communicationDetails {
+    .sectionHeading {
+      color      : var(--color12);
+      font-size  : 13px;
+      font-weight: nth($font-weights, 3);
+    }
+
+    .custom-field {
+      @include fullwidth;
+    }
+
+    .bottemSec {
+      @include flex;
+      column-gap: 20px;
+
+      .formField {
+        flex-basis: 36%;
+      }
+    }
+  }
+}
+
+@mixin shake {
+  animation        : shake-keyframes #{$shake-duration} ease-in-out;
+  -webkit-animation: shake-keyframes #{$shake-duration} ease-in-out;
+}
+
+@keyframes shake-keyframes {
+  0% {
+    transform        : translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform   : translateX(0);
+    -ms-transform    : translateX(0);
+    -o-transform     : translateX(0);
+  }
+
+  10%,
+  90% {
+    transform        : translateX(-#{$shake-distance});
+    -webkit-transform: translateX(-#{$shake-distance});
+    -moz-transform   : translateX(-#{$shake-distance});
+    -ms-transform    : translateX(-#{$shake-distance});
+    -o-transform     :translateX(-#{$shake-distance});
+  }
+
+  30%,
+  70% {
+    transform        : translateX(#{$shake-distance});
+    -webkit-transform: translateX(#{$shake-distance});
+    -moz-transform   : translateX(#{$shake-distance});
+    -ms-transform    : translateX(#{$shake-distance});
+    -o-transform     :translateX(#{$shake-distance});
+  }
+
+  50% {
+    transform        : translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform   : translateX(0);
+    -ms-transform    : translateX(0);
+    -o-transform     : translateX(0);
+  }
+}
+
+
+/**
+ * ----------------------------------------
+ * animation scale-up-ver-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-up-ver-bottom {
+  0% {
+    -webkit-transform       : scaleY(0.4);
+    transform               : scaleY(0.4);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin        : 0% 100%;
+    -moz-transform          : scaleY(0.4);
+    -ms-transform           : scaleY(0.4);
+    -o-transform            : scaleY(0.4);
+  }
+
+  100% {
+    -webkit-transform       : scaleY(1);
+    transform               : scaleY(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin        : 0% 100%;
+    -moz-transform          : scaleY(1);
+    -ms-transform           : scaleY(1);
+    -o-transform            : scaleY(1);
+  }
+}
+
+@keyframes scale-up-ver-bottom {
+  0% {
+    -webkit-transform       : scaleY(0.4);
+    transform               : scaleY(0.4);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin        : 0% 100%;
+    -moz-transform          : scaleY(0.4);
+    -ms-transform           : scaleY(0.4);
+    -o-transform            : scaleY(0.4);
+  }
+
+  100% {
+    -webkit-transform       : scaleY(1);
+    transform               : scaleY(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin        : 0% 100%;
+    -moz-transform          : scaleY(1);
+    -ms-transform           : scaleY(1);
+    -o-transform            : scaleY(1);
+  }
+}
+
+/*Common Mixins and Slectors Section End*/
+/* common popup modals */
+.custommodal {
+  @include font;
+
+  & .mat-mdc-dialog-container {
+    padding: 0 0 24px 0;
+    @include font;
+  }
+
+  & .mat-mdc-dialog-content {
+    margin-left   : 0;
+    margin-right  : 0;
+    padding-bottom: 20px;
+    padding-top   : 20px;
+    @include font;
+  }
+
+  &.tabsModal {
+    @include font;
+
+    & .mat-mdc-dialog-content {
+      padding: 0;
+      @include font;
+    }
+
+    & .mat-mdc-tab-header {
+      position      : sticky;
+      top           : 0;
+      z-index       : 99;
+      background    : var(--color1);
+      border-bottom : 1px solid var(--color14);
+      text-transform: uppercase;
+    }
+
+    & .mat-mdc-tab-body.mat-mdc-tab-body-active {
+      overflow  : hidden !important;
+      min-height: calc(80vh - 59px);
+      padding   : 16px 24px;
+    }
+
+    & .mat-mdc-dialog-container {
+      padding: 0;
+      @include font;
+    }
+
+    & .mat-mdc-dialog-content {
+      min-height: 80vh;
+      @include font;
+    }
+  }
+
+  & .mat-mdc-dialog-title,
+  & .mat-mdc-dialog-actions {
+    padding         : 16px 24px;
+    background-color: var(--color1);
+
+  }
+
+  & .mat-mdc-dialog-title,
+  .mdc-dialog__title {
+    @include flex;
+    font-size  : nth($font-sizes, 3) !important;
+    font-weight: nth($font-weights, 4) !important;
+    color      : var(--color7) !important;
+  }
+
+  & .mat-mdc-dialog-title {
+    margin    : 0;
+    position  : relative;
+    min-height: 40px;
+
+    & a {
+      border: 1px solid var(--color20);
+      width : 24px;
+      height: 24px;
+      @include border-radius(50%);
+      padding         : 0 0 0 7px;
+      color           : var(--color11);
+      position        : absolute;
+      top             : 20px;
+      right           : 20px;
+      background-color: var(--color1);
+      cursor          : pointer;
+
+      & em {
+        width           : 11px;
+        height          : 1px;
+        background-color: var(--color2);
+        @include transform(rotate(45deg));
+        position: absolute;
+        top     : 11px;
+        left    : 6px;
+
+        &:first-child {
+          @include transform(rotate(-45deg));
+        }
+      }
+    }
+  }
+}
+
+.fullscreenpopup,
+.newfullscreenpopup {
+  @include font;
+  max-width: 90vw !important;
+  width    : 100%;
+
+  & .mat-mdc-dialog-title {
+    background-color: var(--color1);
+    padding         : 12px 10px 12px 24px;
+    margin          : 0;
+    position        : relative;
+    font-size       : nth($font-sizes, 3) !important;
+    font-weight     : nth($font-weights, 4) !important;
+  }
+
+  & .mat-mdc-dialog-container {
+    padding: 0;
+
+    & .mat-mdc-dialog-content {
+      margin    : 0;
+      padding   : 0;
+      max-height: calc(85vh - 70px);
+      height    : calc(85vh - 70px);
+      overflow  : hidden;
+    }
+  }
+}
+
+.customstepper {
+  @include font;
+
+  &.mat-stepper-horizontal {
+    padding-top: 10px;
+  }
+
+  & .mat-horizontal-stepper-header-container {
+    padding         : 0 10px;
+    width           : 100%;
+    // border-bottom: 1px solid var(--color13);
+  }
+
+  & .mat-horizontal-stepper-header {
+    height: 40px;
+  }
+
+  .mat-step-header .mat-step-icon-selected,
+  .mat-step-icon-state-edit {
+    color: var(--color1);
+  }
+
+  & .mat-horizontal-content-container {
+    height  : calc(92vh - 120px);
+    padding : 0;
+    overflow: auto;
+
+    & .stpebody,
+    & .steperbody {
+      height    : calc(92vh - 229px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding   : 20px 24px;
+    }
+
+    & .steperbottom {
+      // padding   : 10px 20px 5px 20px;
+      padding         : 8px 30px;
+      width           : 100%;
+      background-color: var(--color1);
+      // border-top: 1px solid var(--color13);
+      // box-shadow: var(--popupFooterShadow);
+      box-shadow      : rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    }
+  }
+}
+
+.customclosebtn {
+  border: 1px solid var(--color20);
+  width : 24px;
+  height: 24px;
+  @include border-radius(50%);
+  padding         : 0 0 0 7px;
+  color           : var(--color11);
+  position        : absolute;
+  top             : 29px;
+  right           : 20px;
+  background-color: var(--color1);
+  cursor          : pointer;
+
+  & em {
+    width           : 11px;
+    height          : 1px;
+    background-color: var(--color2);
+    @include transform(rotate(45deg));
+    position: absolute;
+    top     : 11px;
+    left    : 6px;
+
+    &:first-child {
+      @include transform(rotate(-45deg));
+    }
+  }
+}
+
+/* common popup modals End */
+
+.mainwrapper {
+  .main-content {
+    @include sectionPadding;
+    // max-height: calc(100vh - 100px);
+    // overflow: auto;
+  }
+}
+
+/* Header Section*/
+.header {
+  background-color: var(--color1);
+  box-shadow      : var(--headerShadow);
+  position        : sticky;
+  top             : 0;
+  z-index         : 999;
+  @include font;
+  @include fullwidth;
+  height: var(--headerHeight);
+
+  .headerWrap {
+    padding: 9px 100px;
+
+    .innerSection {
+      @include flex;
+      justify-content: space-between;
+
+      .logo {
+        :hover {
+          background-color: var(--color15);
+          cursor          : pointer;
+          @include border-radius(10px);
+        }
+
+        img {
+          max-width : 130px;
+          max-height: 70px;
+        }
+      }
+
+      .navSection {
+        @include flex;
+        width: 49%;
+
+        :nth-child(3) {
+          margin-left: auto;
+        }
+
+        .mat-mdc-list-base {
+          @include flex;
+          justify-content: flex-end;
+          // width      : 56%;
+          gap            : 40px;
+          margin-left    : 34px;
+        }
+
+        .customLink {
+          text-decoration: none;
+          color          : var(--color12);
+          cursor         : pointer;
+
+          &.current {
+            color: var(--primary-color);
+          }
+        }
+
+      }
+
+      .notificationBell {
+        margin-left: auto;
+        width      : 10%;
+
+
+        button {
+          color: var(--color12);
+
+          .mat-badge-content {
+            color: var(--color1);
+          }
+        }
+      }
+
+      .userdata {
+        padding-right: 10px;
+        cursor       : pointer;
+
+        & span {
+          width           : 40px;
+          height          : 40px;
+          background-color: var(--color5);
+          @include border-radius(50%);
+          border     : 1px solid var(--color17);
+          font-weight: nth($font-weights, 5);
+          @include flexwithcenter;
+
+          .matMenu {
+            & .mat-menu-item {
+              height     : 40px !important;
+              line-height: 40px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.responsiveHeaderWrap {
+  background-color: var(--color22);
+  box-shadow      : var(--headerShadow);
+  position        : relative;
+  z-index         : 999;
+  @include font;
+  @include fullwidth;
+
+  .innerSection {
+    padding: 13px 19px;
+    @include flex;
+    justify-content: space-between;
+
+    :nth-child(1) {
+      .mat-mdc-icon-button.mat-accent {
+        color: var(--color7);
+      }
+    }
+
+    :nth-child(2) {
+      h4 {
+        @include responsiveHeader;
+        text-transform: uppercase;
+        letter-spacing: 0.9;
+        margin        : 0;
+      }
+    }
+
+    :nth-child(3) {
+      .mat-mdc-icon-button.mat-accent {
+        color: var(--color7);
+      }
+    }
+  }
+}
+
+/* Header Section End*/
+
+/* Sidebars Section */
+
+/* On-boarding Section*/
+.onBoardingSection {
+  @include flex;
+  // background-color: var(--color1);
+  @include fullwidth;
+  align-items     : flex-start;
+  background-color: var(--color1);
+
+  .surveyWraper {
+    width: 60%;
+
+    .sd-body__progress--top {
+      margin-bottom: 0;
+    }
+
+    .sd-progress {
+      position           : absolute !important;
+      top                : 85px !important;
+      left               : 80px !important;
+      // margin          : 0 186px 0 0 !important;
+      background-color   : var(--color1);
+      @include border-radius(4px);
+      width: 91%;
+
+      .sd-progress__bar {
+        min-width: 10%;
+      }
+
+      .sd-progress__text {
+        display: none;
+      }
+    }
+
+    .sd-body {
+      background-color: var(--color1);
+
+      .sd-panel {
+        box-shadow: none !important;
+      }
+
+      .sd-page .sd-page__title {
+        padding-left: 40px;
+        font-size   : nth($font-sizes, 5);
+        font-weight : nth($font-weights, 4);
+        position    : relative;
+      }
+
+      .sd-panel__content {
+        padding   : 20px 10px 10px 10px;
+        max-height: calc(100vh - 230px);
+        overflow  : auto;
+      }
+
+      .sd-title.sd-element__title {
+        font-weight: nth($font-weights, 3);
+      }
+
+      .sd-element--with-frame {
+        box-shadow: none;
+      }
+
+      .sd-element--complex>.sd-element__header--location-top:after {
+        display: none;
+      }
+
+      .sd-element--complex.sd-element--with-frame>.sd-element__header--location-top {
+        padding-top   : 10px;
+        padding-bottom: 10px;
+      }
+
+      #sq_107 {
+        padding-top: 0 !important;
+
+        .sd-selectbase {
+          @include flex;
+          gap           : 20px 55px;
+          flex-direction: row;
+          flex-wrap     : wrap;
+        }
+
+        .sd-selectbase__label {
+          @include fullwidth;
+          text-transform: capitalize;
+          cursor        : pointer;
+
+          & .sd-item__decorator {
+            min-height   : 50px;
+            width        : 260px;
+            min-width    : 200px;
+            border-radius: 25px;
+          }
+
+          & .sd-item__control-label {
+            position: absolute;
+            top     : 13px;
+            left    : 100px;
+
+            & .sv-string-viewer {
+              text-transform: capitalize;
+            }
+          }
+
+          & .sd-item--checked .sd-item__decorator {
+            background: #f3f3f3;
+            border    : 1px solid var(--primary-color);
+          }
+        }
+
+      }
+
+      #sq_106 {
+        .sd-selectbase__label {
+          @include fullwidth;
+          text-transform: capitalize;
+          cursor        : pointer;
+
+          & .sd-item__decorator {
+            min-height   : 50px;
+            min-width    : 200px;
+            border-radius: 25px;
+            @include fullwidth;
+          }
+
+          & .sd-item__control-label {
+            position: absolute;
+            top     : 13px;
+            left    : 47%;
+
+            & .sv-string-viewer {
+              text-transform: capitalize;
+            }
+          }
+
+          & .sd-item--checked .sd-item__decorator {
+            background: #f3f3f3;
+            border    : 1px solid var(--primary-color);
+          }
+        }
+      }
+
+      .sd-radio--checked .sd-radio__decorator:after {
+        display: none !important;
+      }
+
+      .sd-item--checked .sd-item__decorator {
+        background: #f3f3f3 !important;
+      }
+
+      .sd-navigation__complete-btn {
+        background-color: var(--color7) !important;
+      }
+    }
+
+
+    .sd-body.sd-body--responsive .sd-page.sd-page__empty-header {
+      padding-top: 0px;
+    }
+
+
+    .sd-footer {
+      position        : fixed;
+      bottom          : 0;
+      background-color: var(--color1);
+      width           : 60%;
+      left            : 0;
+      box-shadow      : var(--popupFooterShadow);
+      padding         : 16px 80px !important;
+      @include flex;
+      justify-content: space-between;
+
+      .sd-btn {
+        padding: 10px 20px !important;
+        @include border-radius(19px);
+        font-weight: nth($font-weights, 3) !important;
+
+        &:focus {
+          box-shadow: none !important;
+        }
+      }
+
+      .sd-btn.sd-navigation__next-btn {
+        background-color: var(--primary-color);
+        color           : var(--color1);
+      }
+
+      .sd-btn.sd-navigation__prev-btn {
+        border: 1px solid var(--primary-color);
+      }
+    }
+  }
+
+
+  .imageWraper {
+    @include imageWraperProps;
+    min-height: 100vh;
+  }
+}
+
+/* On-boarding Section End*/
+
+//notification Bar
+.notificationBar {
+  body.notifications-open {
+    overflow: hidden;
+  }
+
+  .notificationcanvas {
+    position        : fixed;
+    top             : 0;
+    right           : -440px;
+    width           : 400px;
+    height          : 100%;
+    background-color: var(--color1);
+    color           : var(--color2);
+    transition      : right 0.3s ease-in-out;
+    z-index         : 1000;
+
+    .notificationWrapper {
+      @include font;
+      background-color: var(--color1);
+      @include fullwidth;
+      position: relative;
+
+      .headerPart {
+        color        : var(--color2);
+        padding      : 25px;
+        border-bottom: 1px solid var(--color13);
+
+        .notiFicationDrawerClose {
+          @include border-radius(50%);
+          border: 1px solid var(--color16);
+          cursor: pointer;
+          float : left;
+
+          .mat-icon {
+            font-size     : 13px;
+            vertical-align: middle;
+            padding       : 5px;
+          }
+        }
+
+        h3 {
+          text-align    : center;
+          text-transform: capitalize;
+          font-size     : 22px;
+          margin        : 0;
+
+        }
+      }
+
+      .contentPart {
+        max-height: calc(100vh - 140px);
+        overflow  : auto;
+
+        .notificationBox {
+          padding      : 13px 25px 13px 0px;
+          border-bottom: 1px solid var(--color13);
+
+          &:hover {
+            background-color: var(--color15);
+            cursor          : pointer;
+          }
+
+          ul {
+            list-style: none;
+
+            li {
+              &::before {
+                content    : "\2022";
+                color      : var(--color4);
+                font-weight: nth($font-weights, 6);
+                display    : inline-block;
+                width      : 1em;
+                margin-left: -1em;
+              }
+
+              .notification {
+                font-size  : nth($font-sizes, 2);
+                font-weight: nth($font-weights, 3);
+                color      : var(--color7);
+                margin     : 0;
+              }
+
+              .timeWrap {
+                font-size: 13px;
+                color    : var(--color16);
+                margin   : 8px 0px 0px 0px;
+              }
+            }
+          }
+        }
+      }
+
+      .footerPart {
+        text-align      : center;
+        padding         : 10px;
+        position        : fixed;
+        bottom          : 0;
+        box-shadow      : var(--notificationFooter);
+        width           : calc(100% - 74%);
+        background-color: var(--color1);
+
+        button {
+          display       : block;
+          left          : 42%;
+          font-weight   : nth($font-weights, 3);
+          font-size     : 13px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .notificationcanvas.open {
+    right: 0;
+
+    + {
+      .sidebar_backdrop {
+        opacity       : 1;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+.sidebar_backdrop {
+  position        : fixed;
+  top             : 0;
+  right           : 0;
+  bottom          : 0;
+  left            : 0;
+  background-color: var(--overlay);
+  opacity         : 0;
+  pointer-events  : none;
+  transition      : opacity 0.3s ease-in-out;
+  z-index         : 999;
+}
+
+// profile Bar
+.profileBar {
+
+  body.profile-open {
+    overflow: hidden;
+  }
+
+  .profilecanvas {
+    position        : fixed;
+    top             : 0;
+    right           : -440px;
+    width           : 400px;
+    height          : 100%;
+    background-color: var(--color1);
+    color           : var(--color2);
+    transition      : right 0.3s ease-in-out;
+    z-index         : 1000;
+
+  }
+
+  .profilecanvas.open {
+    right: 0;
+
+    + {
+      .sidebar_backdrop {
+        opacity       : 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  .responsiveProfileWraper {
+    .contentWraper {
+      min-width: 340px;
+
+      .topPart {
+        padding         : 30px 20px;
+        background-color: var(--color5);
+        min-height      : 230px;
+        @include font;
+        @include fullwidth;
+
+        .draWerClose {
+          float    : right;
+          font-size: 20px;
+          color    : var(--color7);
+          cursor   : pointer;
+        }
+
+        .profileImageWrap {
+          h1 {
+            @include profileCOntainer;
+            margin-bottom: 12px;
+          }
+        }
+
+        .details {
+          :nth-child(1) {
+            font-weight: nth($font-weights, 5);
+            color      : var(--color7);
+            font-size  : nth($font-sizes, -1);
+            margin     : 0 0 6px 0;
+          }
+
+          :nth-child(2) {
+            @include flex;
+            align-items: flex-start;
+            column-gap : 5px;
+            color      : var(--color7);
+            font-size  : nth($font-sizes, 1);
+            font-weight: nth($font-weights, 3);
+            margin     : 0;
+
+            .mat-icon {
+              font-size: nth($font-sizes, 4);
+            }
+          }
+        }
+      }
+
+      .bottomPart {
+        padding: 20px 0px;
+
+        .menuItem {
+          padding: 15px 20px;
+          @include fullwidth;
+
+          &:hover {
+            cursor          : pointer;
+            background-color: var(--color5);
+          }
+
+          p {
+            @include flex;
+            column-gap: 15px;
+            margin    : 0;
+
+            :nth-child(1) {
+              .mat-icon {
+                font-size: nth($font-sizes, -3);
+                color    : var(--color4);
+              }
+            }
+
+            :nth-child(2) {
+              font-size  : nth($font-sizes, 2);
+              font-weight: nth($font-weights, 4);
+              color      : var(--color7);
+            }
+
+            span {
+              .linkIcon {
+                @include transform(rotate(-45deg));
+              }
+            }
+          }
+
+        }
+      }
+
+      .footer {
+        position        : fixed;
+        bottom          : 0;
+        padding         : 10px;
+        box-shadow      : var(--popupFooterShadow);
+        width           : 28%;
+        background-color: var(--color1);
+
+        &:hover {
+          cursor          : pointer;
+          background-color: var(--color5);
+        }
+
+        p {
+          @include flex;
+          @include fullwidth;
+          justify-content: center;
+          column-gap     : 15px;
+          margin         : 0;
+
+          .mat-icon {
+            font-size: nth($font-sizes, -3);
+            color    : var(--color4);
+          }
+
+          span {
+            font-size  : nth($font-sizes, 2);
+            font-weight: nth($font-weights, 4);
+            color      : var(--color7);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*Sidebars Section End*/
+
+/*ClassList Section*/
+.classListWraper {
+  @include font;
+
+  .titleWrap {
+    @include flex;
+    justify-content: space-between;
+
+    Button {
+      @include sectionBackbtn;
+    }
+
+    .title {
+      text-align: center;
+      @include sectionTitles;
+    }
+
+    margin-bottom: 25px;
+
+    .responsiveFilters,
+    .responsiveHeader {
+      display: none;
+    }
+
+    .viewControlButtons {
+      border-color: var(--color14);
+
+      .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+        line-height: 35px !important;
+      }
+
+      .mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+        background-color: var(--color15);
+      }
+    }
+  }
+
+  .classesWrap {
+    .filtersWrap {
+      padding         : 0px 30px;
+      background-color: var(--primary-color) !important;
+      @include fullwidth;
+      @include flex;
+      justify-content: space-between;
+
+      .mat-mdc-text-field-wrapper {
+        @include font;
+        min-width       : 200px;
+        background-color: var(--color15);
+        @include border-radius(4px);
+      }
+
+      .countWrap {
+        @include flex;
+        column-gap: 6px;
+        max-width : 87px;
+        color     : var(--color1);
+
+        p {
+          font-size  : nth($font-sizes, 9);
+          font-weight: nth($font-weights, 3);
+          margin     : 0;
+        }
+
+        span {
+          font-size: nth($font-sizes, 2);
+        }
+      }
+
+      .filters {
+        form {
+          @include flex;
+          column-gap : 34px;
+          padding-top: 15px;
+
+          .apply-btn,
+          .clear-btn {
+            color         : var(--color1);
+            text-transform: capitalize;
+            margin-bottom : 20px;
+          }
+
+          .apply-btn {
+            border: 1px solid var(--color1);
+          }
+        }
+      }
+    }
+
+    .classesTable {
+      max-height: calc(100vh - 355px);
+      overflow  : auto;
+      @include fullwidth;
+
+      table {
+        @include tableProperties;
+
+        p {
+          margin: 0;
+
+          .customBlock {
+            @include customWeek;
+          }
+        }
+
+        th {
+          background-color: var(--color5);
+          text-transform  : uppercase;
+        }
+
+        thead {
+          text-transform: uppercase;
+        }
+
+        tr {
+          td {
+            padding: 16px;
+          }
+        }
+
+        tr:hover:not(th) {
+          cursor          : pointer;
+          background-color: var(--color5);
+        }
+      }
+    }
+
+    .classListGridView {
+      app-batch-card {
+        @include classListWraperReponsive;
+        padding: 24px 10px 24px 10px;
+        @include flex;
+        flex-wrap      : wrap;
+        justify-content: space-between;
+        gap            : 30px;
+        max-height     : calc(100vh - 330px);
+        overflow       : auto;
+
+        .card {
+          width: 30%;
+
+          .scheduleSection {
+            border: none;
+
+            .customBlock {
+              margin-top: 8px;
+              @include customWeek;
+            }
+
+          }
+        }
+      }
+    }
+
+  }
+
+
+
+  .classListWraperResponsive {
+    display: none;
+  }
+}
+
+.timepicker-overlay {
+  z-index: 10000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 10000000 !important;
+}
+
+.privateClassStepper {
+  @include font;
+
+  .stepOne {
+    text-align: left;
+
+    .sectionHeader {
+      margin-bottom: 15px;
+      font-size    : nth($font-sizes, 2);
+      font-weight  : nth($font-weights, 4);
+      color        : var(--color7);
+    }
+
+    .rangeWrap {
+      .sectionSmallHeader {
+        margin-bottom: 8px;
+        font-size    : nth($font-sizes, 1);
+        font-weight  : nth($font-weights, 1);
+        color        : var(--color12);
+      }
+
+      .dateWrap,
+      .timeWrap {
+        @include flex;
+        gap          : 30px;
+        margin-bottom: 30px;
+        flex-wrap    : wrap;
+      }
+    }
+
+    .preferanceWrap {
+      margin-bottom: 30px;
+
+      .blockHeading {
+        margin-bottom: 12px;
+        font-size    : nth($font-sizes, 2);
+        font-weight  : nth($font-weights, 4);
+        color        : var(--color7);
+      }
+
+      .note {
+        font-size  : 12px;
+        font-weight: nth($font-weights, 3);
+        color      : var(--color11);
+      }
+    }
+  }
+
+  .stepTwo {
+    .headingWrap {
+      margin-bottom: 15px;
+      font-size    : nth($font-sizes, 2);
+      font-weight  : nth($font-weights, 4);
+      color        : var(--color7);
+    }
+
+    .sectionOne {
+      padding-bottom: 30px;
+      border-bottom : 1px solid var(--color13);
+      margin-bottom : 30px;
+
+      .countSection {
+        @include flex;
+        gap: 20px;
+
+        :nth-child(2) {
+          width: 80px;
+        }
+
+        .mat-mdc-mini-fab {
+          background-color: var(--color15);
+          box-shadow      : none !important;
+          margin-bottom   : 10px;
+
+          .mat-icon {
+            color: var(--primary-color);
+          }
+        }
+      }
+    }
+
+    .sectionTwo {
+      padding-bottom: 30px;
+      border-bottom : 1px solid var(--color13);
+      margin-bottom : 30px;
+
+      .rangeSection {
+        margin: 15px 0 0 0;
+
+        .mat-mdc-slider {
+          width      : 300px;
+          margin-left: 0;
+        }
+
+        .note {
+          font-size  : 12px;
+          font-weight: nth($font-weights, 3);
+          color      : var(--color11);
+
+          span {
+            font-size  : nth($font-sizes, 1);
+            font-weight: nth($font-weights, 3);
+            color      : var(--color7);
+            margin-left: 60px;
+          }
+        }
+      }
+    }
+
+    .sectionThree {
+      margin-bottom: 30px;
+
+      .mat-mdc-form-field {
+        @include fullwidth;
+      }
+    }
+  }
+
+  .stepThree {
+    .sectionHeader {
+      margin-bottom: 16px;
+      font-size    : nth($font-sizes, 1);
+      font-weight  : nth($font-weights, 3);
+      color        : var(--color11);
+    }
+
+    .sectionOne {
+      .detailsWrap {
+        padding-bottom: 30px;
+        border-bottom : 1px solid var(--color13);
+        margin-bottom : 30px;
+
+        .calenderSection {
+          p {
+            @include flex;
+            column-gap: 15px;
+
+            :nth-child(1) {
+              color: var(--color17);
+            }
+
+            :nth-child(2) {
+              font-size  : nth($font-sizes, 7);
+              font-weight: nth($font-weights, 1);
+              color      : var(--color7);
+            }
+          }
+        }
+
+        .messageSection {
+          font-size  : nth($font-sizes, 1);
+          font-weight: nth($font-weights, 3);
+          color      : var(--color7);
+        }
+      }
+    }
+
+    .sectionTwo {
+      margin-bottom: 30px;
+
+      .addresspart {
+        @include flex;
+        flex-wrap     : wrap;
+        column-gap    : 20px;
+        align-items   : flex-start;
+        padding-bottom: 30px;
+        border-bottom : 1px solid var(--color13);
+
+        .mat-icon {
+          color: var(--color17);
+        }
+
+        .address {
+          :nth-child(1) {
+            font-size    : nth($font-sizes, 7);
+            font-weight  : nth($font-weights, 1);
+            color        : var(--color7);
+            margin-bottom: 10px;
+          }
+
+          :nth-child(2) {
+            a {
+              color          : var(--primary-color);
+              font-size      : 12px;
+              font-weight    : nth($font-weights, 3);
+              text-decoration: none;
+            }
+          }
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .sectionThree {
+      margin-bottom: 30px;
+
+      .priceWrap {
+        margin-bottom: 10px;
+
+        :nth-child(1) {
+          font-size    : nth($font-sizes, 3);
+          font-weight  : nth($font-weights, 4);
+          color        : var(--color7);
+          margin-bottom: 8px;
+        }
+
+        :nth-child(2) {
+          font-size  : 12px;
+          color      : var(--color7);
+          font-weight: nth($font-weights, 3);
+        }
+      }
+    }
+
+    .note {
+      font-size  : 12px;
+      color      : var(--color7);
+      font-weight: nth($font-weights, 3);
+    }
+
+  }
+}
+
+.guardianspopup,
+.addGuardianPopup {
+
+  .fieldHeader {
+    font-size     : nth($font-sizes, 2);
+    font-weight   : nth($font-weights, 4);
+    color         : var(--color12);
+    text-transform: uppercase;
+  }
+
+  .slectWrap {
+    // margin-bottom: 30px;
+
+    :nth-child(2) {
+      .guardianSelect {
+        width: 50%;
+      }
+    }
+  }
+
+  .emergencyContactWrap {
+    margin: 20px 0 20px 0;
+
+    .contactControl {
+      margin-top: 15px;
+      @include fullwidth;
+
+      .mat-mdc-radio-group {
+        @include flex;
+        flex-direction: column;
+        align-items   : flex-start;
+
+        .mdc-label {
+          font-size  : nth($font-sizes, 1);
+          font-weight: nth($font-weights, 3);
+          color      : var(--color12);
+        }
+      }
+
+      .addNewEmergencyContactWrap {
+        padding-left: 35px;
+        @include flex;
+        flex-direction: row;
+        flex-wrap     : wrap;
+        gap           : 20px 30px;
+
+        .form-filed {
+          width: 47%;
+        }
+
+        .communicationDetails {
+          .sectionHeading {
+            color      : var(--color12);
+            font-size  : 13px;
+            font-weight: nth($font-weights, 3);
+          }
+
+          .custom-field {
+            width: 80%;
+          }
+
+          .bottemSec {
+            @include flex;
+            column-gap: 20px;
+
+            .formField {
+              flex-basis: 28%;
+            }
+          }
+        }
+      }
+
+      .chooseContactWrap {
+        padding-left: 35px;
+        @include fullwidth;
+
+        .form-filed {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  & mat-dialog-actions {
+    justify-content : space-between;
+    padding         : 8px 30px;
+    box-shadow      : var(--popupFooterShadow);
+    background-color: var(--color1);
+
+    .save-btn,
+    .cancle-btn {
+      text-transform: capitalize;
+      @include border-radius(6px);
+    }
+
+    .save-btn {
+      color: var(--color1);
+    }
+  }
+}
+
+.addGuardianPopup {
+  .emergencyContactWrap {
+    margin    : 20px 0 20px 0;
+    min-height: 60vh;
+
+    .contactControl {
+      margin-top: 15px;
+      @include fullwidth;
+
+      .addNewEmergencyContactWrap {
+        padding-left: 35px;
+        @include flex;
+        flex-direction: row;
+        flex-wrap     : wrap;
+        gap           : 20px 30px;
+
+        .form-filed {
+          width: 47%;
+        }
+
+        .communicationDetails {
+          @include fullwidth;
+
+          .sectionHeading {
+            color      : var(--color12);
+            font-size  : 13px;
+            font-weight: nth($font-weights, 3);
+          }
+
+          .custom-field {
+            width: 100%;
+          }
+
+          .bottemSec {
+            @include flex;
+            column-gap: 20px;
+
+            .formField {
+              flex-basis: 36%;
+            }
+          }
+        }
+      }
+
+      .customBoxControl {
+        @include containersWraper;
+
+        .containersWraper {
+          @include flex;
+          flex-direction: row;
+          gap           : 24px;
+          flex-wrap     : wrap;
+          @include fullwidth;
+
+          .studentCardWraper {
+            width     : 209px;
+            padding   : 20px;
+            min-height: 190px;
+
+            h2 {
+              font-size: nth($font-sizes, 3)
+            }
+
+            .nameWrap {
+              font-size  : nth($font-sizes, 2);
+              font-weight: nth($font-weights, 3);
+            }
+
+            .selectWraper {
+              text-align: center;
+              width     : 120px !important;
+
+              //  .mat-mdc-form-field{@include fullwidth;
+              //   @include border-radius(11px);
+              //    background-color: var(--color5) !important;
+              //    .mdc-text-field {
+              //     height: 22px !important;
+              //   }
+
+              //   .mat-mdc-form-field-infix {
+              //     padding-top: 9px !important;
+              //   }
+
+              //   .mdc-floating-label {
+              //     padding-bottom: 10px !important;
+              //   }}
+
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+
+/* classlit section end */
+/*Class Details Section*/
+.classDetailsWraper {
+  // @include sectionPadding;
+  @include font;
+
+  .titleWrap {
+    margin-bottom: 32px;
+
+    button {
+      @include sectionBackbtn;
+      background-color:var(--color1);
+    }
+
+    .title {
+      @include sectionTitles;
+      text-align: center;
+    }
+
+    .responsiveHeader {
+      display: none;
+    }
+
+  }
+
+  // .back-btn {
+  //   display: none;
+  // }
+
+  .detailsWrap {
+    @include fullwidth;
+    box-shadow: var(--dashboard-shadow);
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+
+    h2 {
+      padding         : 30px 80px;
+      font-size       : nth($font-sizes, 10);
+      color           : var(--color7);
+      font-weight     : nth($font-weights, 4);
+      margin          : 0;
+      text-align      : left;
+      background-color: var(--color14);
+    }
+
+    .detailWrap {
+      padding: 30px 80px;
+      @include flex;
+      align-items: flex-start;
+      column-gap: 55px;
+
+      .calenderSection {
+        border: 1px solid var(--color4);
+        @include border-radius(19px);
+        padding: 29px;
+        width  : 300px;
+
+        @include detailsFlexSection;
+        p {
+          .mat-icon {
+            color    : var(--color12);
+          }
+        }
+      }
+
+      .descriptionSection {
+        // padding: 20px;
+
+        .blockHeading {
+          font-size  : nth($font-sizes, 4);
+          font-weight: nth($font-weights, 4);
+          color      : var(--color7);
+          margin     : 0 0 10px 0;
+        }
+
+        .sub-heading {
+          margin     : 0;
+          font-size  : nth($font-sizes, 1);
+          color      : var(--color12);
+          font-weight: nth($font-weights, 3);
+        }
+
+        .locationBlock {
+          margin: 20px 0 24px 0;
+
+          h4 {
+            text-transform: uppercase;
+            font-size     : 12px;
+            font-weight   : nth($font-weights, 4);
+            color         : var(--color12);
+            margin-bottom : 8px;
+          }
+
+          p {
+            @include flex;
+            column-gap: 10px;
+
+            .mat-icon {
+              font-size: nth($font-sizes, 3);
+              color    : var(--color12);
+            }
+
+            span {
+              font-size  : nth($font-sizes, 2);
+              color      : var(--color7);
+              font-weight: nth($font-weights, 3);
+            }
+
+            a {
+              text-decoration: none;
+              margin-left    : 10px;
+              font-size      : nth($font-sizes, 1);
+              color          : var(--primary-color);
+            }
+          }
+        }
+
+        .checkoutTermWrap{
+          @include flex;
+          flex-wrap: wrap;
+          gap:25px;
+          margin-bottom: 24px;
+          button{
+            height: fit-content;
+            p{margin: 0 0 8px 0;}
+            text-align: left;
+            padding: 18px;
+            font-size: nth($font-sizes,2);
+          }
+          button.booktrail-btn{
+            color:var(--color7);
+            & :nth-child(1){
+            color:var(--color12);
+          }}
+        }
+
+        .offersWrap{
+          display: block;
+          .sectionTitle{
+            font-size: nth($font-sizes,2);
+            font-weight: nth($font-weights,3);
+            color: var(--color7);
+            margin:0 0 10px 0;
+          }
+          .plansWrap{
+            padding: 25px;
+            @include border-radius(8px);
+            border: 1px solid var(--color4);
+            .offer{
+              padding: 10px 0 15px 0;
+              border-bottom: 1px solid var(--color14);
+              @include flex;
+              align-items: flex-start;
+              gap: 10px;
+              .mat-icon{
+                    color: var(--color12);
+                    vertical-align: middle;
+                    font-size: nth($font-sizes,4);}
+              .sectionTwo{
+                .checkout-btn{display: block; margin-top: 10px;}
+                .className{font-size: nth($font-sizes,1); font-weight: nth($font-weights,3); color: var(--color7);}
+                .checkout-btn{ text-decoration: none; text-transform: uppercase;font-size: nth($font-sizes,1); font-weight: nth($font-weights,3);
+                  color: var(--primary-color); cursor: pointer; width: fit-content;
+                }
+                .totalPrice{margin-right: 10px; color: var(--color4); text-decoration: line-through;}
+              }
+            }
+            // div{
+            //   .mat-icon{
+            //     color: var(--color12);
+            //     vertical-align: middle;
+            //     margin-right: 10px;
+            //   }
+            //   .title{font-size: nth($font-sizes,1); font-weight: nth($font-weights,3); color: var(--color7);}
+            // }
+          }
+        }
+
+        .pricewrap {
+          margin-bottom: 20px;
+          color        : var(--colo7);
+          font-size    : nth($font-sizes, 3);
+          font-weight  : nth($font-weights, 3);
+        }
+
+        button {
+          font-size     : nth($font-sizes, 1);
+          color         : var(--color1);
+          text-transform: none;
+        }
+      }
+    }
+  }
+
+  .responsiveDetailWrap {
+    display: none;
+  }
+}
+
+/*Class Details Section End*/
+
+/* Student Selection Wraper*/
+.studentSelectionWrap {
+  @include font;
+
+  .titleWrap {
+    @include flex;
+    justify-content: space-between;
+
+    Button {
+      @include sectionBackbtn;
+    }
+
+    .title {
+      text-align: center;
+      @include sectionTitles;
+    }
+
+    .carousel-btns {
+      @include flex;
+      @include border-radius(16px);
+      background-color: var(--color4);
+      padding         : 5px;
+      width           : fit-content;
+
+      hr {
+        background-color: var(--color1);
+      }
+
+      .mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+        background-color: transparent;
+      }
+
+      button {
+        border: none;
+
+        .mat-icon {
+          color: var(--color1);
+        }
+      }
+
+      max-height: 32px;
+      @include fullheight;
+      @include border-radius(16px);
+    }
+
+    margin-bottom: 10px;
+
+    .responsiveHeader {
+      display: none;
+    }
+  }
+
+  .contentPart {
+    .scheduleWraper {
+      text-align   : center;
+      font-size    : nth($font-sizes, 7);
+      color        : var(--color12);
+      margin-bottom: 15px;
+    }
+
+    .sliderWrap {
+      overflow: hidden;
+
+      &:hover {
+        overflow: auto;
+      }
+
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      white-space               : nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom            : 20px;
+
+      .containersWraper {
+        @include containersWraper;
+      }
+
+    }
+
+    .addStudent-btn {
+      float     : right;
+      margin-top: 10px;
+
+      button {
+        border-color: var(--primary-color);
+      }
+    }
+
+    .join-btn {
+      margin-top: 130px;
+      @include fullwidth;
+      text-align: center;
+
+      button {
+        color         : var(--color1);
+        text-transform: capitalize;
+        min-width     : 450px;
+      }
+    }
+  }
+}
+
+/* Student Selection Wraper End*/
+
+/* Location Selection Section*/
+.locationSelectionWrap {
+  @include fullwidth;
+  @include fullheight;
+  @include flex;
+  @include font;
+  padding: 22px 0px;
+
+  .containerWrap {
+    max-width: 575px;
+    margin   : 0 auto;
+
+    .logoWrap {
+      @include responsivelogo;
+    }
+
+    h2 {
+      margin        : 0;
+      margin-bottom : 45px;
+      text-align    : center;
+      text-transform: uppercase;
+      font-size     : nth($font-sizes, 6);
+      font-weight   : nth($font-weights, 5);
+      letter-spacing: 1.8;
+    }
+
+    .responsiveHeader {
+      @include responsiveHeader;
+    }
+
+    .locationsWrap {
+      max-height: calc(100vh - 200px);
+      overflow  : auto;
+
+      .mat-button-toggle-standalone,
+      .mat-button-toggle-group {
+        border   : none !important;
+        flex-wrap: wrap;
+        gap      : 20px 55px;
+
+        .mat-button-toggle-appearance-standard {
+          @include customRoundedBtn;
+          background-color: transparent;
+        }
+
+        .mat-button-toggle-checked {
+          border-color: var(--primary-color);
+          color       : var(--primary-color);
+        }
+      }
+    }
+
+    .prcd-btn-wrap {
+      .proceed-btn {
+        position  : fixed;
+        bottom    : 25px;
+        left      : 32%;
+        width     : 575px;
+        color     : var(--color1);
+        min-height: 50px;
+        font-size : nth($font-sizes, 2);
+      }
+    }
+  }
+
+}
+
+/* Location Selection Section End*/
+
+/*Dash Board Section*/
+.dashBoardWraper {
+  @include font;
+
+  .title {
+    text-align: center;
+    @include sectionTitles;
+  }
+
+  .logoWrap {
+    @include responsivelogo;
+  }
+
+  .responsiveHeader {
+    @include responsiveHeader;
+  }
+
+  .cardsWrap {
+    padding: 45px 0px;
+    @include flex;
+    column-gap     : 70px;
+    flex-wrap      : wrap;
+    justify-content: flex-start;
+    margin-bottom  : 45px;
+
+    .invoiceWrap,
+    .appointmentWrap {
+      h3 {
+        @include dashboardHeaders;
+      }
+
+      .cardwrap {
+        background-color   : var(--color1);
+        padding            : 30px 30px 20px 30px;
+        max-width          : 500px;
+        // max-height      : 300px;
+        // overflow        : auto;
+        box-shadow         : var(--dashboard-shadow);
+        @include border-radius(8px);
+
+        .no-appointment {
+          color    : var(--color12);
+          font-size: ($font-sizes, 7);
+          @include flex;
+          flex-direction: column;
+
+          svg {
+            font-size: nth($font-sizes, 6);
+            color    : var(--color4);
+          }
+        }
+
+        .appoinment {
+          @include appointmentWraper;
+        }
+
+        .viewWrap {
+          text-align : center;
+          font-size  : nth($font-sizes, 2);
+          font-weight: nth($font-weights, 4);
+          color      : var(--primary-color);
+
+
+          p {
+            margin-bottom: 0px;
+            cursor       : pointer;
+
+            button {
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      .resp-viewWrap {
+        display       : none;
+        text-align    : center;
+        font-size     : nth($font-sizes, 2);
+        font-weight   : nth($font-weights, 4);
+        color         : var(--primary-color);
+        text-transform: uppercase;
+
+        p {
+          margin-bottom: 0px;
+          cursor       : pointer;
+        }
+      }
+    }
+
+  }
+
+  .membersWrap {
+    h3 {
+      @include dashboardHeaders;
+    }
+
+    .membersTable {
+      max-height: calc(100vh - 300px);
+      overflow  : auto;
+      @include fullwidth;
+
+      table {
+        @include tableProperties;
+
+        th {
+          text-transform: uppercase;
+        }
+
+      }
+    }
+
+    .respMebersList {
+      display         : none;
+      padding         : 30px 30px 20px 30px;
+      background-color: var(--color1);
+      box-shadow      : var(--dashboard-shadow);
+      @include border-radius(8px);
+
+      .heading {
+        @include cardheadingprop;
+      }
+
+      .smallblock {
+        @include smallblockprop;
+      }
+    }
+  }
+}
+
+/* appointment List Viewall */
+.appoinmentList,
+.invoicesSection {
+  .appointmentMonth {
+    font-size     : nth($font-sizes, 2);
+    font-weight   : nth($font-weights, 4);
+    color         : var(--primary-color);
+    margin-bottom : 20px;
+    text-transform: uppercase;
+  }
+
+  .appoinment {
+    @include appointmentWraper;
+    @include flex;
+    align-items    : flex-start;
+    justify-content: space-between;
+
+    :nth-child(1) {
+      @include flex;
+      align-items: flex-start;
+      column-gap : 15px;
+    }
+  }
+}
+
+.appoinmentDetailsmodal {
+  .appoinmentSection {
+    .appointmentDetails {
+      @include twoColoumnLayout;
+    }
+  }
+
+  .customActionBlock {
+    @include fullwidth;
+    background-color: var(--color5);
+    text-transform  : capitalize !important;
+
+    button:not(:nth-child(1)) {
+      color: var(--color1);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+  }
+}
+
+.invoiceDetailsmodal {
+  .invoiceSection {
+    .appointmentDetails {
+      @include twoColoumnLayout;
+    }
+  }
+
+  .customActions {
+    .pay-now-btn {
+      color: var(--color1);
+    }
+  }
+}
+
+/* members View popup */
+.membersViewPopup {
+  .cutomHeaderWrap {
+    @include flex;
+    justify-content   : space-between;
+    // flex-wrap      : wrap;
+    // row-gap        : 15px;
+    @include fullwidth;
+
+    .leftSction {
+      @include flex;
+      column-gap: 20px;
+      @include fullwidth;
+
+      :nth-child(2) {
+        line-height: 1.5;
+      }
+    }
+
+    .rightSection {
+      @include flex;
+      column-gap     : 30px;
+      justify-content: flex-end;
+      margin-right   : 40px;
+      @include fullwidth;
+
+      .mat-mdc-outlined-button.mat-mdc-button-base {
+        height: 32px;
+      }
+
+      button {
+        @include border-radius(6px);
+        text-transform: capitalize;
+        border-color  : var(--primary-color);
+      }
+
+      :nth-child(1) {
+        .mat-icon {
+          @include transform(rotate(-45deg));
+          color: var(--primary-color);
+        }
+      }
+
+      :nth-child(2) {
+        color       : var(--color7);
+        border-color: var(--color11);
+
+        .mat-icon {
+          @include transform(rotate(0deg));
+          color: var(--color17);
+        }
+      }
+    }
+  }
+
+  .mat-mdc-tab-body.mat-mdc-tab-body-active {
+    max-height: calc(100vh - 300px);
+    overflow  : auto;
+  }
+
+  .dashBoardTabsModal {
+    .detailsWrap {
+      @include tabsSectionHeader;
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--color14);
+
+      .contentSection {
+        @include flex;
+        column-gap    : 90px;
+        row-gap       : 30px;
+        align-items   : flex-start;
+        padding-bottom: 25px;
+        flex-wrap     : wrap;
+
+        .profileImageWrap {
+          @include fullheight;
+          min-height: 190px;
+          border    : 1px solid var(--color14);
+          text-align: center;
+
+          figure {
+            margin: 0;
+
+            img {
+              width : 160px;
+              height: 160px;
+            }
+          }
+
+          a {
+            font-size      : 13px;
+            font-weight    : nth($font-weights, 3);
+            color          : var(--color12);
+            text-transform : uppercase;
+            text-decoration: none;
+            cursor         : pointer;
+          }
+
+        }
+
+        .basicDetailsSec {
+          .appointmentDetails {
+            @include twoColoumnLayout;
+            column-gap: 20px;
+          }
+
+        }
+      }
+    }
+
+    .attendanceWrap {
+      padding-bottom: 25px;
+      margin-bottom : 25px;
+      border-bottom : 1px solid var(--color14);
+      @include tabsSectionHeader;
+
+      .containersWrap {
+        @include flex;
+        // align-items:flex-start;
+        justify-content: flex-start;
+        gap            : 30px;
+        flex-wrap      : wrap;
+
+        .containerOne,
+        .containerTwo {
+          @include border-radius(8px);
+          border          : 1px solid var(--color4);
+          padding         : 20px;
+          background-color: var(--color1);
+
+          .blockHeader {
+            font-size     : 13px;
+            color         : var(--color4);
+            font-weight   : nth($font-weights, 3);
+            margin        : 0 0 10px 0;
+            text-transform: uppercase;
+            margin        : 0 0 10px 0;
+          }
+
+          .batchWrap {
+            @include flex;
+
+            .current,
+            .previous {
+              border-right : 1px solid var(--color4);
+              padding-right: 25px;
+              font-weight  : nth($font-weights, 3);
+              color        : var(--color12);
+
+              p {
+                margin: 0 0 8px 0;
+              }
+
+              & :nth-child(1) {
+                font-size: nth($font-sizes, 1);
+              }
+
+              & :nth-child(2):not(span) {
+                font-size  : 22px;
+                font-weight: nth($font-weights, 4);
+                color      : var(--color7);
+
+                span {
+                  font-size: 13px;
+                  color    : var(--color12);
+                }
+              }
+
+              & :nth-child(3) {
+                font-size: 13px;
+                color    : var(--color12);
+              }
+            }
+
+            .previous {
+              padding: 0 0 0 25px;
+              border : none;
+            }
+          }
+
+        }
+
+        .containerTwo {
+          .rewardAmount {
+            font-size  : nth($font-sizes, -3);
+            font-weight: nth($font-weights, 4);
+            color      : var(--color7);
+            margin     : 0;
+          }
+
+          .reward-Btn {
+            text-align: left;
+
+            button {
+              font-size     : 13px;
+              font-weight   : nth($font-weights, 3);
+              text-transform: capitalize;
+              margin-bottom : 20px;
+              padding       : 0px;
+            }
+          }
+        }
+      }
+    }
+
+    .otherDetailsWrap {
+      @include tabsSectionHeader;
+
+      div {
+        margin-bottom: 30px;
+
+        p {
+          margin     : 0 0 10px 0;
+          font-weight: nth($font-weights, 3);
+        }
+
+        .label {
+          font-size: 13px;
+          color    : var(--color4);
+        }
+
+        .value {
+          font-size: nth($font-sizes, 1);
+          color    : var(--color7);
+        }
+      }
+    }
+
+    .appointmentMonth {
+      font-size     : nth($font-sizes, 2);
+      font-weight   : nth($font-weights, 4);
+      color         : var(--primary-color);
+      margin-bottom : 20px;
+      text-transform: uppercase;
+    }
+
+    .appoinment {
+      @include appointmentWraper;
+      @include flex;
+      align-items    : flex-start;
+      justify-content: space-between;
+
+      :nth-child(1) {
+        @include flex;
+        align-items: flex-start;
+        column-gap : 15px;
+      }
+    }
+
+    .rewardWrap {
+      padding   : 25px;
+      box-shadow: var(--rewardbox);
+      width     : 180px;
+      @include border-radius(8px);
+      margin-bottom: 30px;
+
+      & :nth-child(1) {
+        font-size  : nth($font-sizes, 7);
+        font-weight: nth($font-weights, 4);
+        color      : var(--primary-color);
+        margin-top : 0px;
+      }
+
+      & :nth-child(2) {
+        @include flex;
+        column-gap    : 8px;
+        // align-items: flex-end;
+
+        .rewardIcon {
+          color: var(--primary-color);
+
+          .mat-icon {
+            font-size     : nth($font-sizes, 3);
+            vertical-align: bottom;
+          }
+        }
+
+        & :nth-child(2) {
+          font-size  : 22px;
+          font-weight: nth($font-weights, 5);
+          color      : var(--color7);
+        }
+      }
+    }
+
+    .walletWraper {
+      h3 {
+        margin     : 0 0 14px 0;
+        font-weight: nth($font-weights, 4);
+        font-size  : nth($font-sizes, 7);
+        color      : var(--color7);
+      }
+
+      .walletSection {
+        @include flex;
+        gap      : 20px 30px;
+        flex-wrap: wrap;
+
+        .walletBox {
+          @include border-radius(8px);
+          border          : 1px solid var(--color4);
+          padding         : 16px;
+          background-color: var(--color1);
+          width           : auto;
+
+          .amount {
+            @include flex;
+            justify-content: space-between;
+            margin-bottom  : 10px;
+
+            & :nth-child(1) {
+              font-size  : 17px;
+              font-weight: nth($font-weights, 4);
+              color      : var(--greenText);
+            }
+
+            .customChip {
+              border          : 1px solid var(--color14);
+              background-color: var(--color5);
+            }
+          }
+
+          .timewrap {
+            font-size     : 13px;
+            font-weight   : nth($font-weights, 3);
+            color         : var(--color12);
+            padding-bottom: 10px;
+            border-bottom : 1px dashed var(--color4);
+            margin-bottom : 10px;
+          }
+
+          .messageWrap {
+            font-size  : 12px;
+            font-weight: nth($font-weights, 3);
+            color      : var(--color17);
+          }
+        }
+      }
+
+    }
+
+    .guardiansTab {
+      .add-btn {
+        float         : right;
+        margin-bottom : 20px;
+        text-transform: uppercase;
+      }
+
+      .respFab {
+        position: fixed;
+        bottom  : 15px;
+        right   : 10px;
+
+        .mat-icon {
+          color: var(--color1);
+        }
+      }
+
+      .guardiansListWrap {
+        max-height: calc(100vh - 330px);
+        overflow  : auto;
+        @include fullwidth;
+
+        table {
+          table-layout: fixed;
+          @include fullwidth;
+
+          tr {
+            th {
+              font-size     : 12px;
+              color         : var(--color12);
+              font-weight   : nth($font-weights, 3);
+              text-transform: capitalize;
+            }
+          }
+        }
+
+        border: 1px solid var(--color4);
+      }
+
+      .respgridList {
+        .guardianCardWraper {
+          padding      : 20px;
+          margin-bottom: 20px;
+          @include border-radius(8px);
+          border          : 1px solid var(--color4);
+          min-width       : 250px;
+          background-color: var(--color1);
+
+          .blockOne,
+          .blockTwo,
+          .blockThree,
+          .blockFour {
+            p {
+              margin: 0;
+            }
+
+            margin-bottom: 25px;
+          }
+
+          .blockOne {
+            @include flex;
+            justify-content: space-between;
+            align-items    : flex-start;
+
+            .grayChip {
+              width: fit-content;
+            }
+          }
+
+          .headerLabel {
+            font-size    : nth($font-sizes, 4);
+            font-weight  : nth($font-weights, 3);
+            color        : var(--color7);
+            margin-bottom: 8px !important;
+          }
+
+          .smallheaderLabel {
+            font-size    : nth($font-sizes, 1);
+            font-weight  : nth($font-weights, 3);
+            color        : var(--color12);
+            margin-bottom: 8px !important;
+          }
+
+          .recordValue {
+            font-size  : nth($font-sizes, 2);
+            font-weight: nth($font-weights, 3);
+            color      : var(--color7);
+          }
+        }
+      }
+
+    }
+  }
+}
+
+/*Dash Board Section End*/
+
+
+/*Checkout Section*/
+.checkoutWraper {
+  padding: 0px 100px;
+  @include font;
+
+  .titleWrap {
+    margin-bottom: 32px;
+
+    Button {
+      @include sectionBackbtn;
+    }
+
+    .title {
+      @include sectionTitles;
+      text-align: center;
+    }
+
+    .responsiveHeader {
+      display: none;
+    }
+
+  }
+
+  .back-btn {
+    display: none;
+  }
+
+  .checkOutContentWraper {
+    @include flex;
+    align-items: flex-start;
+    @include fullwidth;
+    @include font;
+    gap      : 65px;
+    flex-wrap: wrap;
+
+    .itemPart {
+      @include flex;
+      flex-direction: column;
+      flex-wrap     : wrap;
+      row-gap       : 25px;
+
+      .containerOne,
+      .containerTwo {
+        @include checkoutContainers;
+        width: 550px;
+
+        .programWraper {
+          padding-bottom: 16px;
+          margin-bottom : 16px;
+          border-bottom : 1px solid var(--color14);
+
+          :nth-child(1) {
+            font-size  : nth($font-sizes, 4);
+            font-weight: nth($font-weights, 4);
+            color      : var(--color7);
+            margin     : 0px 0px 8px 0px;
+            @include flex;
+            justify-content: space-between;
+            flex-wrap      : wrap;
+
+            :nth-child(2) {
+              color: var(--blueText);
+            }
+          }
+
+          :nth-child(2) {
+            font-size  : nth($font-sizes, 7);
+            font-weight: nth($font-weights, 3);
+            color      : var(--color10);
+            margin     : 0px;
+          }
+        }
+
+        .details {
+          @include flex;
+          // justify-content: space-between;
+          @include fullwidth;
+          column-gap: 30px;
+
+          p {
+            margin     : 0px;
+            font-weight: nth($font-weights, 3);
+            @include flex;
+            flex-direction: column;
+            align-items   : flex-start;
+            // @include fullwidth;
+
+            :nth-child(1) {
+              font-size     : nth($font-sizes, 8);
+              color         : var(--color17);
+              margin-bottom : 6px;
+              text-transform: uppercase;
+            }
+
+            :nth-child(2) {
+              font-size: nth($font-sizes, 1);
+              color    : var(--color7);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .summaryPart {
+    .containerThree {
+      @include checkoutContainers;
+      width: 350px;
+
+      .sectionHeader {
+        h3 {
+          font-size  : nth($font-sizes, 3);
+          font-weight: nth($font-weights, 4);
+          color      : var(--color7);
+          margin     : 0px 0px 16px 0px;
+        }
+      }
+
+      .summarydetails {
+        padding-bottom: 20px;
+        border-bottom : 1px solid var(--color14);
+        margin-bottom : 20px;
+
+        p {
+          @include flex;
+          justify-content: space-between;
+          margin         : 0px;
+
+          :nth-child(n) {
+            font-size     : nth($font-sizes, 1);
+            color         : var(--color6);
+            margin-bottom : 10px;
+            text-transform: capitalize;
+          }
+
+          .price {
+            color      : var(--color7) !important;
+            font-weight: nth($font-weights, 4) !important;
+          }
+
+        }
+      }
+
+      .promoWrap {
+        margin-bottom : 25px;
+        padding-bottom: 25px;
+        border-bottom : 1px solid var(--color14);
+
+        p {
+          @include flex;
+          justify-content: space-between;
+          font-size      : nth($font-sizes, 1);
+          color          : var(--color6);
+          margin         : 0px 0px 5px 0px;
+        }
+
+        .promoInput {
+          @include fullwidth;
+        }
+      }
+
+      .totalAmountWrap {
+        p {
+          @include flex;
+          justify-content: space-between;
+          margin         : 0px;
+
+          :nth-child(n) {
+            font-size     : 22px;
+            font-weight   : nth($font-weights, 5);
+            color         : var(--color2);
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+
+    .proceed-btn {
+      color         : var(--color1);
+      margin-top    : 25px;
+      text-transform: capitalize;
+      @include fullwidth;
+    }
+  }
+}
+
+/* coupons Popup*/
+.couponsPopup {
+  @include font;
+
+  .codeinputWrap {
+    @include flex;
+    padding-top: 15px;
+
+    .mat-mdc-form-field {
+      width: 88%;
+
+      .mdc-notched-outline__trailing {
+        border-right              : none !important;
+        border-top-right-radius   : 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+
+      .mdc-text-field {
+        height: 44px !important;
+      }
+
+      .mat-mdc-form-field-infix {
+        padding-top: 9px !important;
+      }
+
+      .mdc-floating-label {
+        padding-bottom: 10px !important;
+      }
+    }
+
+    button {
+      min-height               : 44px;
+      color                    : var(--color1);
+      font-weight              : nth($font-weights, 3);
+      border-left              : none !important;
+      border-top-left-radius   : 0 !important;
+      border-bottom-left-radius: 0 !important;
+      margin-bottom            : 22px;
+    }
+  }
+
+  .couponsWrap {
+    max-height: calc(100vh - 300px);
+    overflow  : auto;
+
+    .codeDetailsWrap {
+      @include flex;
+      align-items    : flex-start;
+      justify-content: space-between;
+      border         : 1px solid var(--color14);
+      padding        : 15px 20px;
+      margin-bottom  : 20px;
+
+      .leftWrap {
+        :nth-child(1) {
+          font-size        : nth($font-sizes, 1);
+          color            : var(--color7);
+          font-weight      : nth($font-weights, 4);
+          margin-bottom    : 8px;
+          // text-transform: capitalize;
+        }
+
+        :nth-child(2) {
+          font-size       : 10px;
+          padding         : 4px 20px;
+          color           : var(--color7);
+          background-color: var(--color15);
+          border          : 1px solid var(--primary-color);
+          width           : fit-content;
+          margin-bottom   : 10px;
+        }
+
+        :nth-child(3) {
+          font-size  : 12px;
+          font-weight: nth($font-weights, 4);
+          color      : var(--color12);
+        }
+
+        :nth-child(4) {
+          span {
+            text-transform: lowercase;
+            color         : var(--primary-color);
+            font-size     : 12px;
+            font-weight   : nth($font-weights, 4);
+            cursor        : pointer;
+            text-align    : left;
+            border        : none;
+            background    : none;
+            padding       : 0;
+          }
+
+        }
+      }
+
+      .rightWrap {
+        .apply-btn {
+          background-color: var(--color12);
+          color           : var(--color1);
+          @include border-radius(16px);
+          padding       : 0;
+          text-transform: capitalize;
+          font-size     : 12px;
+          height        : 25px;
+          font-weight   : nth($font-weights, 3);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+/*Checkout Section End*/
+
+/*Order Summary Section*/
+.orderSummaryWraper {
+  // @include sectionPadding;
+  @include font;
+
+  .title {
+    text-align: center;
+    @include sectionTitles;
+    margin-bottom: 25px;
+  }
+
+  .responsiveHeader {
+    display: none;
+  }
+
+  .summaryContentWrap {
+    @include flex;
+    align-items: flex-start;
+    column-gap : 75px;
+    flex-wrap  : wrap;
+
+    .orderDetailsWraper,
+    .thankYouWraper {
+      background-color: var(--color1);
+      @include border-radius(6px);
+    }
+
+    .orderDetailsWraper {
+      padding: 25px;
+      width  : 420px;
+
+      .section1,
+      .section2,
+      .section3,
+      .section4 {
+        .customBoldText {
+          font-weight: nth($font-weights, 5);
+          color      : var(--color7);
+          font-size  : nth($font-sizes, 1);
+          text-align : right;
+        }
+
+        .customLiteText {
+          font-size  : nth($font-sizes, 1);
+          font-weight: nth($font-weights, 3);
+          color      : var(--color10);
+        }
+
+        .customMediumText {
+          font-weight: nth($font-weights, 4);
+        }
+
+        .typicalFlex,
+        p {
+          @include flex;
+          justify-content: space-between;
+          align-items    : flex-start;
+          // flex-wrap: wrap;
+          color          : var(--color7);
+          margin         : 6px 0px;
+
+          .section-header {
+            font-size  : nth($font-sizes, 2);
+            font-weight: nth($font-weights, 4);
+
+            .classFor {
+              font-weight: nth($font-weights, 3);
+              font-size  : nth($font-sizes, 1);
+
+              :nth-child(1) {
+                color: var(--color7);
+              }
+
+              :nth-child(2) {
+                color: var(--color4);
+              }
+            }
+          }
+        }
+      }
+
+      .section1 {
+        .evenTprice {
+          text-align : right;
+          font-size  : nth($font-sizes, 1);
+          font-weight: nth($font-weights, 3);
+          color      : var(--color11);
+
+          .promoText {
+            margin   : 0;
+            font-size: 12px;
+            color    : var(--primary-color);
+          }
+        }
+
+
+      }
+
+      .section1,
+      .section2 {
+        padding-bottom: 10px;
+        border-bottom : 1px solid var(--color14);
+      }
+
+      .section2 {
+        padding-top: 10px;
+      }
+
+      .section3 {
+        padding-bottom: 50px;
+
+        .custompad {
+          padding: 10px 0px;
+        }
+      }
+
+      .section4 {
+        p {
+          :nth-child(n) {
+            font-size  : 22px;
+            font-weight: nth($font-weights, 5);
+          }
+        }
+      }
+    }
+
+    .thankYouWraper {
+      padding: 30px 170px;
+
+
+      .thankYouSec {
+        margin-bottom: 30px;
+
+        h1 {
+          letter-spacing: 1.8px;
+          text-transform: uppercase;
+          font-size     : nth($font-sizes, 6);
+          font-weight   : nth($font-weights, 5);
+          color         : var(--color7);
+          text-align    : center;
+          margin        : 0 0 8px 0;
+        }
+
+        h4 {
+          font-weight   : nth($font-weights, 4);
+          font-size     : nth($font-sizes, 7);
+          color         : var(--color12);
+          text-align    : center;
+          margin        : 0;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .orderDetails {
+      margin-bottom: 30px;
+
+      h3 {
+        font-size     : nth($font-sizes, 4);
+        font-weight   : nth($font-weights, 5);
+        color         : var(--color7);
+        text-transform: capitalize;
+        text-align    : center;
+        margin        : 0 0 6px 0;
+        border-bottom : 1px solid var(--color14);
+      }
+
+      .orderLabels {
+        @include flex;
+        column-gap     : 30px;
+        justify-content: center;
+
+        p {
+          @include flex;
+          align-items   : flex-start;
+          flex-direction: column;
+          gap           : 5px;
+          font-size     : nth($font-sizes, 1);
+          color         : var(--color17);
+
+          :nth-child(1) {
+            font-weight: nth($font-weights, 4);
+            color      : var(--color12);
+            font-size  : nth($font-sizes, 7);
+          }
+        }
+      }
+    }
+
+    .actionButtons {
+      margin-bottom: 20px;
+      @include flex;
+      column-gap: 20px;
+      @include fullwidth;
+
+      .downLoadBtn,
+      .emailResend {
+        text-transform: capitalize;
+        font-size     : nth($font-sizes, 1);
+        border-color  : var(--primary-color);
+      }
+    }
+
+    .classesExplore {
+      font-size     : nth($font-sizes, 1);
+      text-transform: capitalize;
+      color         : var(--color1);
+      @include fullwidth;
+    }
+  }
+}
+
+/*Order Summary End*/
+
+/*Profile Section*/
+.profileWraper {
+  @include font;
+
+  .titleWrap {
+
+    .title {
+      text-align: center;
+      @include sectionTitles;
+    }
+
+    margin-bottom: 25px;
+
+    .profile-back-btn {
+      display         : none;
+      text-transform  : uppercase;
+      background-color: var(--color1);
+      color           : var(--color7);
+    }
+  }
+
+  .profileContentWrap {
+    .profile {
+      padding         : 25px 40px;
+      background-color: var(--color1);
+      margin-bottom   : 25px;
+      @include flex;
+      justify-content: space-between;
+
+      .partOne {
+        @include flex;
+        column-gap: 20px;
+
+        h1 {
+          @include profileCOntainer;
+        }
+
+        .details {
+          :nth-child(1) {
+            margin: 0px;
+            @include flex;
+
+            .name {
+              font-size  : nth($font-sizes, -3);
+              font-weight: nth($font-weights, 4);
+              color      : var(--color7);
+              position   : relative;
+
+            }
+          }
+
+          .email-sub {
+            font-size  : nth($font-sizes, 7);
+            font-weight: nth($font-weights, 3);
+            color      : var(--color12);
+            margin     : 6px 0px;
+          }
+
+          .changePWD {
+            text-decoration: none;
+            color          : var(--primary-color);
+            cursor         : pointer;
+          }
+        }
+      }
+
+      .partTwo {
+        .invite-btn {
+          text-transform: capitalize;
+          @include border-radius(6px);
+          border-color: var(--primary-color);
+
+          .mat-icon {
+            @include transform(rotate(-45deg));
+          }
+        }
+
+        .resp-Edit-btn {
+          display       : none;
+          text-transform: capitalize;
+          @include border-radius(6px);
+          border-color: var(--color16);
+
+          .mat-icon {
+            color: var(--color12);
+          }
+        }
+      }
+
+    }
+  }
+
+  .tablistWraper {
+    background-color: var(--color1);
+
+    .mat-mdc-tab-group {
+      .mat-mdc-tab-header {
+        border-bottom: 1px solid var(--color14);
+
+        .mat-mdc-tab-label-container {
+          .mat-mdc-tab-labels {
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .detailsTab {
+        padding: 24px 45px;
+        @include flex;
+        align-items: flex-start;
+        column-gap : 50px;
+
+        .labels,
+        .values {
+          font-size  : nth($font-sizes, 1);
+          font-weight: nth($font-weights, 3);
+          @include flex;
+          justify-content: flex-start;
+          flex-direction : column;
+          align-items    : flex-start;
+          row-gap        : 16px;
+        }
+
+        .labels {
+          color: var(--color12);
+        }
+
+        .values {
+          color: var(--color7);
+        }
+      }
+    }
+  }
+
+
+
+  .membersList {
+    max-height: calc(100vh - 425px);
+    overflow  : auto;
+    @include fullwidth;
+
+    table {
+      @include tableProperties;
+
+      th {
+        text-transform: uppercase;
+      }
+
+      .mdc-data-table__cell {
+        padding: 16px;
+      }
+
+      tr:hover {
+        cursor          : pointer;
+        background-color: var(--color5);
+      }
+
+      th {
+        pointer-events: none;
+      }
+
+    }
+
+    .add-btn {
+      position: fixed;
+      right   : calc(100vw - 94%);
+      bottom  : calc(100vh - 98%);
+      color   : var(--color1);
+    }
+  }
+
+}
+
+// add memberPopup
+.addMemberPopup {
+
+  .studentSwithRap {
+    padding-bottom: 25px;
+    margin-bottom : 25px;
+    border-bottom : 1px solid var(--color5);
+
+    p {
+      font-size  : nth($font-sizes, 1);
+      font-weight: nth($font-weights, 3);
+      color      : var(--color12);
+    }
+  }
+
+  .sudentDetailsSection {
+    form {
+      .custom-field {
+        margin-bottom: 20px;
+        @include fullwidth;
+      }
+
+      .studentSection,
+      .guardianSection {
+        padding: 0;
+
+        .sectionHeading {
+          color      : var(--color12);
+          font-size  : nth($font-sizes, 2);
+          font-weight: nth($font-weights, 5);
+        }
+
+        .flexForm {
+          @include flex;
+          gap      : 20px 38px;
+          flex-wrap: wrap;
+
+          .formField {
+            flex-basis: 47%;
+          }
+
+          margin-bottom: 20px;
+        }
+
+      }
+
+      .guardianSection {
+        margin-bottom: 30px;
+      }
+
+      @include communicationDetails;
+
+    }
+  }
+
+  mat-dialog-actions {
+    justify-content: space-between;
+    padding        : 8px 30px;
+    box-shadow     : var(--popupFooterShadow);
+
+    .save-btn,
+    .cancle-btn {
+      text-transform: capitalize;
+      @include border-radius(6px);
+    }
+
+    .save-btn {
+      color: var(--color1);
+    }
+  }
+
+}
+
+/* invite popup*/
+.invitePopup {
+
+  .referralSwitchWrap {
+    margin-bottom: 25px;
+
+    p {
+      margin     : 0px;
+      font-size  : nth($font-sizes, 1);
+      font-weight: nth($font-weights, 3);
+      color      : var(--color12);
+    }
+  }
+
+  .selectionBox {
+    .headerLeabel {
+      font-size     : nth($font-sizes, 2);
+      font-weight   : nth($font-weights, 4);
+      color         : var(--color12);
+      text-transform: uppercase
+    }
+  }
+
+  .referralBox {
+    @include border-radius(8px);
+    border    : 1px solid var(--color4);
+    padding   : 25px;
+    text-align: center;
+    color     : var(--color7);
+
+    h3 {
+      font-size  : nth($font-sizes, 7);
+      font-weight: nth($font-weights, 4);
+      margin     : 0 0 8px 0;
+    }
+
+    h4 {
+      font-size  : nth($font-sizes, 2);
+      font-weight: nth($font-weights, 3);
+      margin     : 0 0 15px 0;
+
+      span {
+        background-color: var(--greenBackground);
+      }
+    }
+
+    .linkGenerate {
+      margin: 0 0 8px 0;
+
+      button {
+        @include border-radius(6px);
+        color         : var(--color1);
+        text-transform: capitalize;
+        font-weight   : nth($font-weights, 3);
+
+        .mat-icon {
+          @include transform(rotate(-45deg));
+        }
+      }
+    }
+
+    .message {
+      font-weight: nth($font-weights, 3);
+      color      : var(--color17);
+      font-size  : 12px;
+      margin     : 0;
+    }
+  }
+}
+
+/*verification Popup*/
+.otpverificationpopup {
+  .beforeVerification {
+    .inputSection {
+      .header-Label {
+        font-size  : nth($font-sizes, 2);
+        font-weight: nth($font-weights, 3);
+        color      : var(--color16);
+        margin     : 0 0 6px 0;
+      }
+
+      .boxes {
+        @include flex;
+        justify-content: space-between;
+
+        .codeBox {
+          width: 53px;
+        }
+      }
+
+      .message {
+        margin     : 0 0 15px 0;
+        text-align : center;
+        font-weight: nth($font-weights, 3);
+        color      : var(--color16);
+        font-size  : 12px;
+      }
+    }
+
+    .verify-btn {
+      @include verifyPopupBtn;
+      @include fullwidth;
+      text-transform: uppercase;
+    }
+
+    .resendBlock {
+      text-align: center;
+
+      :nth-child(1) {
+        margin     : 0 0 7px 0;
+        font-size  : nth($font-sizes, 1);
+        font-weight: nth($font-weights, 4);
+        color      : var(--color16);
+        text-align : center;
+      }
+
+      :nth-child(2) {
+        color          : var(--primary-color);
+        text-transform : uppercase;
+        font-weight    : nth($font-weights, 4);
+        font-size      : nth($font-sizes, 1);
+        letter-spacing : 0.28px;
+        text-decoration: none;
+
+      }
+    }
+  }
+
+  .afterVerification {
+    text-align: center;
+
+    .iconSection {
+      .mat-icon {
+        width    : 60px;
+        height   : 60px;
+        color    : var(--greenText);
+        font-size: 60px;
+      }
+
+      margin-bottom: 30px;
+    }
+
+    .contentSection {
+      :nth-child(1) {
+        // font-size: nth($font-sizes,-3);
+        font-size  : 28px;
+        font-weight: nth($font-weights, 5);
+        color      : var(--color7);
+        margin     : 0 0 14px 0;
+      }
+
+      :nth-child(2) {
+        font-weight: nth($font-weights, 4);
+        margin     : 0 0 25px 0;
+        font-size  : nth($font-sizes, 2);
+        color      : var(--color10);
+      }
+    }
+
+    .gotIT-btn {
+      @include verifyPopupBtn;
+      color         : var(--primary-color) !important;
+      border-color  : var(--color15);
+      margin-bottom : 0;
+      letter-spacing: 0;
+      font-size     : nth($font-sizes, 2);
+      @include fullwidth;
+      text-transform: uppercase;
+    }
+  }
+}
+
+/*Profile Section End*/
+
+
+
+
+
+
+/* login section */
+
+// .loginSection {
+//   @include loginSection;
+//   font-family: var(--custom-font) !important;
+
+//   & .loginWrap {
+//     @include loginWrap;
+
+//     & form {
+//       @include textcenter;
+//       padding: 50px;
+
+//       & .mat-mdc-form-field {
+//         @include fullwidth;
+//         margin-top: 15px;
+
+//         & .mat-mdc-form-field-error {
+//           @include d-i-bloc;
+//         }
+//       }
+
+//       & .actions {
+//         @include fullwidth;
+
+//         & button {
+//           @include button;
+//         }
+//       }
+//     }
+//   }
+
+//   & .loginWrap-card-adjust {
+//     @include loginWrap;
+
+//     & form {
+//       @include textcenter;
+//       padding: 0px 50px 50px 50px;
+
+//       & .mat-mdc-form-field {
+//         @include fullwidth;
+
+//         & .mat-mdc-form-field-error {
+//           @include d-i-bloc;
+//         }
+//       }
+
+//       & .actions {
+//         @include fullwidth;
+
+//         & button {
+//           @include button;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .invalid-password {
+//   @include shake;
+// }
+
+
+/* login section end*/
+/* Email Login Section*/
+.loginSection {
+  @include flexwithcenter;
+  @include vpheight;
+  background-color : var(--color1) !important;
+  background-repeat: no-repeat;
+  background-size  : cover;
+
+  &::before {
+    content : "";
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    @include fullwidth;
+    @include fullheight;
+    background-color: var(--overlay);
+    z-index         : 1;
+  }
+
+  .loginWrap {
+    background-color: var(--color1) !important;
+    @include border-radius(20px);
+    width  : 620px;
+    z-index: 2;
+
+    .emailBox {
+      padding: 40px 60px;
+
+      .logoWrap {
+        width        : 170px;
+        height       : 90px;
+        margin-bottom: 25px;
+
+        img {
+          @include fullwidth;
+          @include fullheight;
+        }
+      }
+
+      .inputWrap {
+        @include fullwidth;
+
+        p {
+          font-size: nth($font-sizes, 3);
+          color    : var(--color7);
+          @include font;
+          font-weight  : nth($font-weights, 4);
+          text-align   : left;
+          margin-bottom: 10px;
+        }
+        p.userMsg{ margin:0 0 20px 0; font-size: nth($font-sizes, 1);font-weight: nth($font-weights,3);color: var(--color12);}
+        .emailInput {
+          @include fullwidth;
+          margin-bottom: 20px;
+        }
+        .otpInput{ 
+        .ng-otp-input-wrapper{
+          @include flex; justify-content: center; gap:15px; margin-bottom: 20px;
+          .otp-input{min-width: 54px;}}
+        }
+        
+        .resetCodeLink{ margin-bottom: 20px; text-align: right; color: var(--color6); font-weight: nth($font-weights,3); font-size: nth($font-sizes,1); float: right;
+          :hover{
+            text-decoration: underline;
+          }
+        }
+
+        .socialIconWrap {
+          margin-bottom: 25px;
+
+          p {
+            @include font;
+            font-size  : nth($font-sizes, 2) !important;
+            font-weight: nth($font-weights, 3);
+            text-align : center;
+            color      : var(--color4);
+            margin     : 0px 0px 25px 0px;
+          }
+
+          .iconWrap {
+            @include flex;
+            gap            : 20px 50px;
+            justify-content: center;
+
+            a {
+              color: var(--color2);
+
+              img {
+                width : 25px;
+                height: 25px;
+              }
+            }
+          }
+        }
+      }
+
+      .actionWrap {
+        @include fullwidth;
+
+        .ctnu-btn {
+          color: var(--color1) !important;
+          @include font;
+          font-size     : nth($font-sizes, 2);
+          font-weight   : nth($font-weights, 3);
+          text-transform: capitalize;
+          @include fullwidth;
+          flex-direction: row-reverse;
+          align-items   : center;
+          gap           : 15px;
+          margin-bottom : 30px;
+          .mat-icon {
+            margin-top: 3px;
+          }
+        }
+        .bact-btn{
+          text-align: center;
+          @include fullwidth;
+          color: var(--color12);
+        }
+      }
+    }
+  }
+}
+
+/* Email Login Section End*/
+
+/* Status chips stylings*/
+$chipRadius: 16px;
+$padStyle  : 3px 12px;
+$textSize  : 12px !important;
+$colors    : ("greenChip": (var(--greenBackground), var(--greenText)),
+  "blueChip": (var(--blueBackground), var(--blueText)),
+  "redChip": (var(--redBackground), var(--redText)),
+  "orangeChip": (var(--orangeBackground), var(--orangeText)),
+  "grayChip": (var(--grayBackground), var(--color12)),
+  "saffronChip": (var(--saffranBackground), var(--saffranText)));
+
+@each $class,
+$values in $colors {
+  $bgColor  : nth($values, 1);
+  $textColor: nth($values, 2);
+
+  .#{$class} {
+    padding         : $padStyle;
+    background-color: $bgColor;
+    color           : $textColor;
+    vertical-align  : middle !important;
+    text-align      : center;
+    font-size       : $textSize;
+    text-transform  : capitalize;
+    @include border-radius($chipRadius);
+  }
+}
+
+/* Status chips stylings end*/
+/* Custom scrollbar style */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrolltrack);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color11);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollhover);
+
+}
+
+
+/* fallbac component*/
+.pageLoader {
+  position: fixed;
+  top     : 0;
+  left    : 0;
+  @include fullheight;
+  @include fullwidth;
+  background-color: var(--overlay);
+  @include flex;
+  justify-content: center;
+
+  .lds-dual-ring {
+    display : inline-block;
+    width   : 100px;
+    height  : 100px;
+    position: relative;
+
+    &::after {
+      content: " ";
+      display: block;
+      width  : 85px;
+      height : 85px;
+      margin : 8px;
+      @include border-radius(50%);
+      border           : 6px solid var(--primary-color);
+      border-color     : var(--primary-color)transparent var(--primary-color) transparent;
+      animation        : lds-dual-ring 1.2s linear infinite;
+      -webkit-animation: lds-dual-ring 1.2s linear infinite;
+      position         : absolute;
+    }
+  }
+
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+      @include transform(rotate(0deg));
+    }
+
+    100% {
+      @include transform(rotate(360deg));
+    }
+  }
+}
+
+/* Responsive Section*/
+
+@media only screen and (max-width:$tab_screen) {
+  .mainwrapper {
+    .main-content {
+      padding: 0;
+    }
+  }
+
+  .header {
+    position: sticky;
+    top     : 0;
+
+    .headerWrap {
+      padding: 9px 20px;
+
+      .innerSection {
+        @include flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .classListWraper {
+    padding: 0px;
+    @include font;
+
+    .titleWrap {
+      display: block;
+
+      Button {
+        display: none;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .responsiveHeader {
+        @include responsiveHeader;
+        @include fullwidth;
+        text-transform: uppercase;
+        @include flex;
+        justify-content: space-between;
+        margin-bottom  : 5px;
+        padding        : 16px;
+
+        span {
+          button {
+            display: block;
+            border : none;
+          }
+        }
+      }
+
+      .responsiveFilters {
+        @include flex;
+        padding: 18px 18px 0px 18px;
+
+        .locationFilter,
+        .ageFilter {
+          @include flex;
+          @include border-radius(20px);
+          margin-right  : 16px;
+          font-size     : nth($font-sizes, 1);
+          text-transform: capitalize;
+          border        : 1px solid var(--color11);
+          width         : fit-content;
+          color         : var(--color7);
+        }
+
+      }
+
+      .viewControlButtons {
+        display: none;
+      }
+    }
+
+    .classesWrap {
+      display: none;
+
+      .filtersWrap {
+        display: none;
+      }
+
+      .classesTable {
+        display: none;
+      }
+
+    }
+
+    .classListWraperResponsive {
+      display: block;
+
+      app-batch-card {
+        @include classListWraperReponsive;
+        max-height: calc(100vh - 110px);
+        overflow  : auto;
+        @include flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        row-gap       : 30px;
+        // @include fullwidth;
+
+        .card {
+          // @include fullwidth;
+
+          .scheduleSection {
+            border: none;
+
+            .customBlock {
+              @include customWeek;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .classDetailsWraper {
+    padding: 0px;
+
+    .titleWrap {
+      margin-bottom: 0px;
+
+      Button {
+        display: none;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .responsiveHeader {
+        @include responsiveHeader;
+        @include flex;
+        justify-content: space-between;
+        padding-left   : 13px;
+        padding-right  : 13px;
+
+        span {
+          button {
+            display: block;
+            border : none;
+          }
+        }
+      }
+
+    }
+
+    .back-btn {
+      padding: 0px 16px;
+      display: block;
+
+      button {
+        border: 1px solid var(--color13);
+        @include border-radius(6px);
+        color           : var(--color7);
+        font-size       : nth($font-sizes, 8);
+        background-color: var(--color1);
+      }
+    }
+
+    .detailsWrap {
+      display: none;
+    }
+
+    .responsiveDetailWrap {
+      display: block;
+      padding: 20px 16px;
+      @include fullwidth;
+      max-height: calc(100vh - 190px);
+      overflow  : auto;
+
+      .cardBlock {
+        background-color: var(--color1);
+        box-shadow      : var(--dashboard-shadow);
+        @include border-radius(8px);
+        padding      : 20px;
+        margin-bottom: 40px;
+
+        h2 {
+          font-weight: nth($font-weights, 5);
+          font-size  : nth($font-sizes, 4);
+          color      : var(--color7);
+          margin     : 0px 0px 8px 0px;
+        }
+
+        .sub-heading {
+          font-weight: nth($font-weights, 4);
+          font-size  : nth($font-sizes, -1);
+          color      : var(--color7);
+          margin     : 0px 0px 14px 0px;
+        }
+
+        .desc {
+          font-weight: nth($font-weights, 3);
+          font-size  : 13px;
+          color      : var(--color12);
+        }
+
+        .pricewrap {
+          font-weight: nth($font-weights, 4);
+          font-size  : nth($font-sizes, -2);
+          color      : var(--color7);
+        }
+
+        .flexSection {
+          @include detailsFlexSection;
+        }
+
+        .mapBlock {
+          .mat-mdc-outlined-button .mdc-button__ripple {
+            border-color: var(--primary-color);
+          }
+
+          button {
+            @include fullwidth;
+          }
+        }
+      }
+
+      .proceed-btn {
+        position: fixed;
+        bottom  : 20px;
+        right   : 16px;
+        left    : 16px;
+        color   : var(--color1);
+      }
+    }
+
+
+  }
+
+  .locationSelectionWrap {
+    padding-top: 20px;
+
+    .containerWrap {
+      max-width: 100%;
+      @include fullwidth;
+      margin: 0 auto;
+
+      .logoWrap {
+        display: block;
+      }
+
+      h2 {
+        display: none;
+      }
+
+      .responsiveHeader {
+        @include flex;
+        justify-content: space-around;
+      }
+
+      .locationsWrap {
+        flex-direction: column;
+        @include fullwidth;
+
+        .mat-button-toggle-standalone,
+        .mat-button-toggle-group {
+          justify-content: center;
+        }
+      }
+
+      .prcd-btn-wrap {
+        .proceed-btn {
+          left  : 0;
+          bottom: 0;
+          @include fullwidth;
+        }
+      }
+    }
+
+  }
+
+  .studentSelectionWrap {
+    padding: 0;
+    @include fullwidth;
+
+    .titleWrap {
+      Button {
+        display: none;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .carousel-btns {
+        display: none;
+      }
+
+      margin-bottom: 0px;
+
+      .responsiveHeader {
+        @include responsiveHeader;
+        @include flex;
+        justify-content: space-between;
+        @include fullwidth;
+        padding-left : 13px;
+        padding-right: 13px;
+
+        span {
+          button {
+            display: block;
+            border : none;
+          }
+        }
+
+        margin-bottom: 0px;
+
+      }
+    }
+
+    .contentPart {
+      padding: 24px 16px;
+
+      .scheduleWraper {
+        display   : block;
+        font-size : nth($font-sizes, 1);
+        text-align: left;
+      }
+
+      .sliderWrap {
+        display : block;
+        overflow: visible;
+
+        .containersWraper {
+          flex-direction: column;
+          row-gap       : 18px;
+          min-width     : auto;
+          max-height    : calc(100vh - 300px);
+          overflow      : auto;
+
+          .studentCardWraper {
+            @include fullwidth;
+            flex-direction : row;
+            flex-wrap      : wrap;
+            justify-content: flex-start;
+            column-gap     : 16px;
+          }
+        }
+
+      }
+
+      .addStudent-btn {
+
+        button {
+          position: fixed;
+          bottom  : 30px;
+          right   : 16px;
+          left    : 16px;
+        }
+      }
+
+      .join-btn {
+        @include fullwidth;
+        margin-top: 0px;
+
+        button {
+          position : fixed;
+          bottom   : 90px;
+          right    : 16px;
+          left     : 16px;
+          min-width: auto;
+        }
+      }
+    }
+  }
+
+  .dashBoardWraper {
+    padding: 0px;
+
+    .title {
+      display: none;
+    }
+
+    .responsiveHeader {
+      @include fullwidth;
+      text-transform: uppercase;
+      @include flex;
+      justify-content: space-around;
+      margin-bottom  : 5px;
+    }
+
+    .contentSection {
+      max-height   : calc(100vh - 100px);
+      overflow     : auto;
+      // padding   : 0px 100px;
+
+      .cardsWrap {
+        padding      : 16px;
+        margin-bottom: 0px;
+
+        .invoiceWrap,
+        .appointmentWrap {
+          @include fullwidth;
+
+          .cardwrap {
+            padding  : 20px 20px 20px 20px;
+            max-width: 100%;
+
+            .appoinment {
+
+              .mat-icon {
+                display: block;
+              }
+
+              .nameWrap {
+                width: 70%;
+
+                .resp-statusblock {
+                  display: block;
+                }
+              }
+
+              .statusblock {
+                display: none;
+              }
+
+              .responsiveChevron {
+                display   : block;
+                align-self: center;
+              }
+
+            }
+
+            .viewWrap {
+              display: block;
+            }
+
+          }
+
+          .resp-viewWrap {
+            display: none;
+          }
+        }
+      }
+
+      .membersWrap {
+        padding: 16px;
+
+        .membersTable {
+          display: none;
+        }
+
+        .respMebersList {
+          @include flex;
+          align-items       : flex-start;
+          justify-content   : space-between;
+          width             : auto;
+          flex-wrap         : wrap;
+          // max-width      : 400px;
+        }
+      }
+    }
+  }
+
+  .loginSection {
+    background-color: var(--color1) !important;
+    background-image: none;
+
+    .loginWrap {
+      box-shadow: var(--emailboxshadow);
+
+    }
+  }
+
+  .loginSection::before {
+    background-color: transparent;
+  }
+
+  .checkoutWraper {
+    padding: 0;
+    @include fullwidth;
+
+    .titleWrap {
+      margin-bottom: 20px;
+
+      Button {
+        display: none;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .responsiveHeader {
+        @include responsiveHeader;
+        @include flex;
+        justify-content: space-between;
+        padding-left   : 13px;
+        padding-right  : 13px;
+
+        span {
+          button {
+            display: block;
+            border : none;
+          }
+        }
+      }
+
+    }
+
+    .back-btn {
+      padding: 0px 16px;
+      display: block;
+
+      button {
+        @include border-radius(6px);
+        border          : 1px solid var(--color13);
+        color           : var(--color7);
+        font-size       : nth($font-sizes, 8);
+        background-color: var(--color1);
+      }
+    }
+
+    .checkOutContentWraper {
+      padding: 20px 16px;
+      @include fullwidth;
+      gap       : 25px;
+      max-height: calc(100vh - 180px);
+      overflow  : auto;
+
+      .itemPart {
+        @include fullwidth;
+
+        .containerOne,
+        .containerTwo {
+          @include fullwidth;
+
+          .programWraper {
+            border: none;
+          }
+
+          .details {
+            flex-direction: column;
+            row-gap       : 12px;
+
+            p {
+              align-items    : center;
+              flex-direction : row;
+              justify-content: space-between;
+              width          : 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .summaryPart {
+      @include fullwidth;
+
+      .containerThree {
+        @include fullwidth;
+      }
+
+      .proceed-btn {
+        position: fixed;
+        bottom  : 20px;
+        right   : 16px;
+        left    : 16px;
+        width   : auto;
+      }
+    }
+  }
+
+  .orderSummaryWraper {
+    padding: 0;
+    @include fullwidth;
+
+    .title {
+      display: none;
+    }
+
+    .summaryContentWrap {
+      flex-wrap : wrap-reverse;
+      gap       : 25px;
+      padding   : 24px 18px;
+      max-height: calc(100vh - 170px);
+      overflow  : auto;
+
+      .orderDetailsWraper {
+        padding: 20px;
+        @include fullwidth;
+
+        .section1 {
+          .typicalFlex {
+            .section-header {
+              .classFor {
+                flex-direction: column;
+              }
+            }
+
+            .evenTprice {
+              .promoText {
+                font-size: 9px;
+              }
+            }
+          }
+        }
+      }
+
+      .thankYouWraper {
+        @include fullwidth;
+        padding: 20px 18px;
+      }
+
+      .orderDetails {
+        h3 {}
+
+        .orderLabels {
+          p {
+            :nth-child(1) {}
+          }
+        }
+      }
+
+      .actionButtons {
+        justify-content: center;
+
+        .downLoadBtn,
+        .emailResend {
+          font-size: 12px;
+        }
+      }
+
+      .classesExplore {
+        position: fixed;
+        bottom  : 20px;
+        right   : 16px;
+        left    : 16px;
+        width   : auto;
+      }
+    }
+  }
+
+  .onBoardingSection {
+    flex-direction: column;
+    flex-wrap     : wrap;
+
+    .surveyWraper {
+      @include fullwidth;
+
+      .sd-body__progress--top {}
+
+      .sd-progress {
+        top   : 85px !important;
+        left  : 0 !important;
+        margin: 0 0 0 43px !important;
+
+        .sd-progress__bar {}
+
+        .sd-progress__text {}
+      }
+
+      .sd-body {
+
+        .sd-page .sd-page__title {
+          padding-left: 0;
+        }
+
+        .sd-element--with-frame {
+          padding: 0;
+        }
+
+        #sq_106 {
+          .sd-selectbase__label {
+            & .sd-item__decorator {
+              min-width: auto;
+            }
+
+            & .sd-item__control-label {
+              left      : 0;
+              text-align: center;
+            }
+
+          }
+        }
+
+        #sq_107 {
+
+          .sd-selectbase {
+            justify-content: flex-start;
+          }
+
+          .sd-selectbase__label {
+
+            & .sd-item__control-label {
+              left      : 0;
+              text-align: center;
+            }
+
+          }
+
+        }
+      }
+
+      .sd-footer {
+        @include fullwidth;
+        padding: 16px !important;
+      }
+    }
+
+    .imageWraper {
+      display: none;
+    }
+
+  }
+}
+
+@media only screen and (max-width:$mobile_screen) {
+  .dashBoardWraper {
+    .contentSection {
+      padding: 0px !important;
+    }
+  }
+
+
+  .profileWraper {
+    .titleWrap {
+      padding: 20px 0 0 16px;
+
+      .title {
+        display: none;
+      }
+
+      .profile-back-btn {
+        display: block;
+      }
+    }
+
+    .profileContentWrap {
+      .profile {
+        flex-wrap: wrap;
+        padding  : 16px;
+
+        .partOne {
+          .details {
+            p {
+              :nth-child(2) {
+                display: none;
+              }
+            }
+          }
+
+          margin-bottom: 20px;
+        }
+
+        .partTwo {
+
+          .resp-Edit-btn {
+            display    : inline-block;
+            margin-left: 30px;
+          }
+
+        }
+      }
+
+      .tablistWraper {
+        .detailsTab {
+          padding: 20px;
+        }
+
+        .membersList {
+          .gridView {
+            padding: 10px;
+
+            .respMebersList {
+              @include flex;
+              align-items     : flex-start;
+              justify-content : space-between;
+              width           : auto;
+              flex-wrap       : wrap;
+              padding         : 20px;
+              margin-bottom   : 10px;
+              background-color: var(--color1);
+              box-shadow      : var(--dashboard-shadow);
+              @include border-radius(8px);
+
+
+              .heading {
+                @include cardheadingprop;
+              }
+
+              .smallblock {
+                @include smallblockprop;
+              }
+            }
+          }
+
+          .add-btn {
+            right : 8%;
+            bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .notificationcanvas {
+    width: 320px !important;
+
+    // right:-330px !important;
+    // .notificationWrapper{width: 300px !important;}
+    .footerPart {
+      width: 100% !important;
+
+      button {
+        left: 29% !important;
+      }
+    }
+  }
+
+  .profileBar {
+    .profilecanvas {
+      left              : -340px;
+      width             : 300px;
+      transition        : left 0.3s ease-in-out;
+      -webkit-transition: left 0.3s ease-in-out;
+      -moz-transition   : left 0.3s ease-in-out;
+      -ms-transition    : left 0.3s ease-in-out;
+      -o-transition     : left 0.3s ease-in-out;
+    }
+
+    .profilecanvas.open {
+      left: 0;
+    }
+
+    .responsiveProfileWraper {
+      .contentWraper {
+        min-width: 300px;
+
+        .footer {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+
+  .loginSection {
+    .loginWrap {
+      margin: 0px 15px;
+
+      .inputWrap {
+        p {
+          font-size: nth($font-sizes, 4) !important;
+        }
+      }
+
+      .emailBox {
+        padding: 30px !important;
+      }
+    }
+  }
+
+  .membersViewPopup {
+    @include responsiveDialog;
+
+    .cutomHeaderWrap {
+      flex-wrap: wrap;
+      row-gap  : 20px;
+
+      .leftSction {
+        :nth-child(1) {
+          font-size: nth($font-sizes, 4) !important;
+        }
+      }
+
+      .rightSection {
+        justify-content: flex-start;
+        margin-right   : 0px !important;
+
+        .mat-mdc-outlined-button.mat-mdc-button-base {
+          height: 32px;
+        }
+      }
+    }
+
+  }
+
+  /* appointment & invoices list and details Popups*/
+  .appoinmentList,
+  .invoicesList {
+    @include responsiveDialog;
+    bottom: -24px;
+  }
+
+  .appoinmentDetailsmodal {
+    @include responsiveDialog;
+    bottom: -24px;
+
+    .customActionBlock {
+      background-color: var(--color1);
+
+      button {
+        @include fullwidth;
+      }
+    }
+  }
+
+  .invoiceDetailsmodal {
+    @include responsiveDialog;
+    bottom: -24px;
+
+    .customActions {
+      @include flex;
+      @include fullwidth;
+      justify-content: space-between;
+      padding        : 0;
+
+      button {
+        width: 48%;
+      }
+    }
+  }
+
+  .privateClassStepper {
+    @include responsiveDialog;
+    top: 0;
+
+    .mat-mdc-dialog-container {
+      .mat-mdc-dialog-content {
+
+        .mat-step-header .mat-step-icon-selected,
+        .mat-step-icon-state-edit {
+          color: var(--color1);
+        }
+
+        max-height: calc(89vh - 70px);
+        height    : calc(89vh - 70px);
+        overflow  : auto;
+
+        .customResponsiveStepper {
+          .mat-vertical-content {
+            padding: 0 16px 16px 16px;
+          }
+
+          .stpebody {
+            .stepOne {
+              .rangeWrap {
+
+                .dateWrap,
+                .timeWrap {
+                  gap          : 10px;
+                  margin-bottom: 15px;
+                }
+              }
+            }
+
+            .stepTwo {
+              .sectionTwo {
+                .rangeSection {
+                  .mat-mdc-slider {
+                    width: 260px;
+                  }
+                }
+              }
+            }
+
+            .stepThree {
+              .sectionTwo {
+                .addresspart {
+                  .address {
+                    width: 255px;
+                  }
+                }
+              }
+            }
+
+          }
+
+          .steperbottom {
+            @include flex;
+            justify-content: flex-end;
+            gap            : 20px;
+            flex-direction : row-reverse;
+
+            button {
+              @include border-radius(6px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .couponsPopup {
+    .mdc-dialog__content {
+      padding: 20px;
+    }
+
+    @include responsiveDialog;
+    bottom: -24px;
+
+    .couponsWrap {
+      max-height: calc(100vh - 100px);
+      overflow  : auto;
+    }
+  }
+
+  .addMemberPopup {
+    @include responsiveDialog;
+  }
+
+  .invitePopup {
+    @include responsiveDialog;
+  }
+
+  .guardianspopup,
+  .addGuardianPopup {
+    @include responsiveDialog;
+    bottom: -24px;
+
+    .slectWrap {
+      :nth-child(2) {
+        @include fullwidth;
+
+        .guardianSelect {
+          width: 100% !important
+        }
+      }
+    }
+
+    .contactControl {
+      .addNewEmergencyContactWrap {
+        .form-filed {
+          width: 100% !important
+        }
+      }
+    }
+
+    & mat-dialog-actions {
+      @include flex;
+      flex-direction: row;
+      @include fullwidth;
+      padding         : 10px !important;
+      background-color: var(--color1);
+
+      .cancle-btn {
+        border    : none;
+        box-shadow: none;
+      }
+
+      .save-btn {
+        color : var(--color1);
+        height: 40px;
+      }
+
+      button {
+        width: 48%;
+      }
+    }
+  }
+
+  .otpverificationpopup {
+    @include responsiveDialog;
+    bottom: -24px;
+  }
+
+  // .addGuardianPopup{
+  //   @include responsiveDialog;
+  //   bottom: -24px;
+  // }
+
+  .onBoardingSection {
+    .surveyWraper {
+
+      .sd-body__progress--top {}
+
+      .sd-progress {
+        top   : 95px !important;
+        left  : 0 !important;
+        margin: 0 0 0 28px !important;
+        bottom: 10px !important;
+
+        .sd-progress__bar {}
+
+        .sd-progress__text {}
+      }
+
+      .sd-body {
+
+        .sd-page .sd-page__title {
+          // font-size: 30px;
+        }
+
+        #sp_107_content {
+          max-height: calc(100vh - 250px);
+          overflow  : auto;
+        }
+
+        .sd-element--with-frame {}
+
+        #sq_106 {
+          .sd-selectbase__label {
+            & .sd-item__decorator {}
+
+            & .sd-item__control-label {}
+
+          }
+        }
+
+        #sq_107 {
+
+          .sd-selectbase {
+            justify-content: center;
+            max-height     : calc(100vh - 250px);
+            overflow       : auto;
+          }
+
+          .sd-selectbase__label {
+
+            & .sd-item__control-label {}
+
+          }
+
+        }
+      }
+
+      .sd-footer {}
+    }
+
+    .imageWraper {}
+
+  }
+  .classListWraperResponsive {
+    display: block;
+
+    app-batch-card {
+      @include classListWraperReponsive;
+      max-height: calc(100vh - 110px);
+      overflow  : auto;
+      @include flex;
+      flex-direction:row !important;
+      row-gap       : 30px;
+      // @include fullwidth;
+      .card {
+        @include fullwidth;
+
+        .scheduleSection {
+          border: none;
+
+          .customBlock {
+            @include customWeek;
+          }
+        }
+      }
+    }
+  }
+}

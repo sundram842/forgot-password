@@ -1,0 +1,52 @@
+{
+  "GLOBAL": {
+    "LOGIN": "Login",
+    "USER_NAME": "Username",
+    "PASSWORD": "Password",
+    "FORGOT_PASSWORD": "Forgot password",
+    "SUBMIT": "Submit",
+    "ERROR": "Oops! something went wrong....!!"
+  },
+  "BATCH": {
+    "CLASS": "CLASS",
+    "FOR": "FOR",
+    "CLASS_START": "CLASS / START",
+    "WHEN": "WHEN",
+    "WHERE": "WHERE",
+    "WITH": "WITH",
+    "FEE": "FEE",
+    "UPCOMING": "Upcoming",
+    "EVERY": "Every",
+    "DAY": "Day",
+    "WEEK": "Week",
+    "FOR_EVERY": "For Every",
+    "AGES": "Ages",
+    "TO": "to",
+    "SUBMIT": "Submit",
+    "ERROR_MESSAGE": "No record found",
+    "ALL_DATES": "All dates",
+    "LOCATION": "Location",
+    "AGE": "Age Group",
+    "CLASSES_FOUND": "Classes Found",
+    "DAYS": "days",
+    "WEEKS": "weeks",
+    "APPLY": "apply",
+    "CLEAR": "clear",
+    "CLASSES": "Classes",
+    "BACK_TO_CLASSES": "Back to Classes",
+    "CLASS_DETAILS": "Class Details",
+    "BY": "By",
+    "DESCRIPTION": "Description about this dance class & about the instructor's experience with this dance style.",
+    "APPLICABLE_OFFERS": "Applicable Offers",
+    "BOOK_TRAIL_CLASS": "Book a trail class",
+    "CHECKOUT": "Checkout with Current term",
+    "GET_DIRECTIONS": "GET DIRECTIONS",
+    "ADD_TO_CHECKOUT": "Add to checkout",
+    "NO_BATCHES_FOUND":"There are no classes at the moment, please come back later.",
+    "NO":"No"
+  },
+  "LOCATION": {
+    "SELECT_A_LOCATION": "SELECT A LOCATION",
+    "PROCEED": "Proceed"
+  }
+}

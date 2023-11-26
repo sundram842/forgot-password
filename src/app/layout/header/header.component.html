@@ -1,0 +1,146 @@
+<ng-container *ngIf="!isSmallScreen">
+    <header class='header'>
+        <div class='headerWrap'>
+            <div class='innerSection'>
+                <div class='logo'>
+                    <img src="{{partnerLogo}}" alt="Company Logo" loading='lazy' routerLink="/dashboard"/>
+                </div>
+                <div class='navSection'>
+                    <mat-nav-list>
+                        <a class="customLink" routerLink="/dashboard" routerLinkActive="current">Dashboard</a>
+                        <a class="customLink" (click)="navigateToBatches()">{{"BATCH.CLASSES"| translate}}</a>
+                        <a class="customLink" routerLink="#" routerLinkActive="current">Events</a>
+                        <a class="customLink" routerLink="#" routerLinkActive="current">Sign in</a>
+                    </mat-nav-list>
+                    <span class='notificationBell'>
+                        <button mat-icon-button color="" aria-label="notificationBell" (click)="toggleOffcanvas()">
+                            <mat-icon matBadge="" matBadgeColor="primary" fontSet="material-icons-outlined">
+                                notifications
+                            </mat-icon>
+                        </button>
+                    </span>
+                    <span>
+                        <div class="userdata" (click)="profilecanvas()">
+                            <span class="usericon">
+                                <mat-icon fontSet="material-icons-outlined"
+                                    style="color:var(--color12);">person</mat-icon>
+                            </span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+</ng-container>
+
+<!-- Notifications Sidebar-->
+<section class="notificationBar">
+
+    <!-- Offcanvas content -->
+    <div [ngClass]="{'notificationcanvas': true, 'open': isOpen}" id="customOffcanvas">
+        <div class="notificationWrapper">
+            <div class="headerPart">
+                <span class="notiFicationDrawerClose" (click)="toggleOffcanvas()">
+                    <mat-icon>close</mat-icon></span>
+                <h3>Notifications <span>(1)</span></h3>
+            </div>
+            <div class="contentPart">
+
+                <div class="notificationBox">
+                    <ul>
+                        <li><span class='notification'>Remember that using inline styles like this can quickly become
+                                cumbersome if you have a lot of styling to apply.</span>
+                            <p class='timeWrap'>25 mins ago</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footerPart">
+                <button mat-button color="primary">view all</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="sidebar_backdrop" [ngClass]="{'open': isOpen}" id="offcanvasBackdrop"></div>
+</section>
+
+<!--Profile Sidebar-->
+<section class="profileBar">
+
+    <!-- Offcanvas content -->
+    <div [ngClass]="{'profilecanvas': true, 'open': isprofileOpen}">
+        <div class='responsiveProfileWraper'>
+            <div>
+                <div class="contentWraper">
+                    <div class="topPart">
+                        <span class="draWerClose" (click)="profilecanvas()"><mat-icon>close</mat-icon></span>
+                        <div class="profileImageWrap">
+                            <!-- <img src={companyLogo} alt="profile" loading='lazy' /> -->
+                            <h1>JM</h1>
+                        </div>
+                        <div class='details'>
+                            <p>John Mecullum</p>
+                            <p><span><mat-icon>mail</mat-icon></span>johnmecullum@gmail.com</p>
+                        </div>
+
+                    </div>
+                    <div class="bottomPart">
+                        <!-- <mat-nav-list> -->
+                        <div class="menuItem">
+                            <p><span><mat-icon>person</mat-icon></span><span> My Profile</span></p>
+                        </div>
+                        <div class="menuItem">
+                            <p><span><mat-icon>event_available</mat-icon></span><span>Classes</span></p>
+                        </div>
+                        <div class="menuItem">
+                            <p><span><mat-icon>notifications</mat-icon></span><span>Notifications</span></p>
+                        </div>
+                        <div class="menuItem">
+                            <p><span><mat-icon>lock</mat-icon></span><span>Change Password</span></p>
+                        </div>
+                        <div class="menuItem">
+                            <p><span><mat-icon class='linkIcon'>link</mat-icon></span><span>Invite</span></p>
+                        </div>
+                        <div class="menuItem">
+                            <p><span><mat-icon>verified_user</mat-icon></span><span>Privacy Policy</span></p>
+                        </div>
+                        <!-- </mat-nav-list> -->
+                    </div>
+                    <div class="footer">
+                        <p><mat-icon>logout</mat-icon><span>Signout</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="sidebar_backdrop" [ngClass]="{'open': isprofileOpen}"></div>
+</section>
+
+
+<ng-container *ngIf="isSmallScreen">
+    <header>
+        <div class="responsiveHeaderWrap">
+            <div class="innerSection">
+                <div>
+                    <button mat-icon-button color="accent" (click)="profilecanvas()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+                <!-- Dynamic header Will appear here-->
+                <div>
+                    <h4>{{ headerName }}</h4>
+                </div>
+                <div>
+                    <button mat-icon-button color="accent" aria-label="notificationBell" (click)="toggleOffcanvas()">
+                        <mat-icon>
+                            notifications
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+</ng-container>

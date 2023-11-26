@@ -1,0 +1,41 @@
+<ng-container *ngFor="let batch of batches; let i = index">  
+    <div class="card">
+        <div class="classWrap">
+            <p class='classname'>{{batch?.title ?? "-"}}</p>
+            <p class='subtitle'><span>{{'BATCH.BY' | translate}} </span>{{batch?.instructor?.displayName ?? "-"}}</p>
+        </div>
+        <p><span class='greenChip'>{{'BATCH.UPCOMING' | translate}}</span></p>
+        <div class='scheduleSection'>
+            <p><mat-icon fontSet="material-icons-outlined">date_range</mat-icon><span>
+                {{(batch?.startDate |date: 'MMM d, y') ?? "-"}} {{'BATCH.TO' | translate}} {{(batch?.endDate |date: 'MMM d, y') ?? "-"}},
+                </span></p>
+            <p><mat-icon fontSet="material-icons-outlined">schedule</mat-icon><span>{{(batch?.startDate | date:
+                    'HH:mm') ?? "-"}} {{'BATCH.TO' | translate}} {{(batch?.endDate | date: 'HH:mm') ?? "-"}}
+                    <span>
+                        <span *ngIf="batch?.recurring">{{'BATCH.EVERY' | translate}} {{batch?.recurringPattern?.frequency}}
+                            {{batch?.recurringPattern?.repeatEvery === 1 ? ('BATCH.DAY' | translate) : ('BATCH.WEEK' |
+                            translate) }}</span>
+                            <app-week-recurrence [specialDays]="batch?.repeatOn || []"></app-week-recurrence>
+                    </span>
+
+                </span></p>
+            <p><mat-icon fontSet="material-icons-outlined">group</mat-icon><span
+                    *ngFor="let criteria of batch?.eligibilityCriteria">
+                    <ng-container *ngIf="criteria.key === 'age'">
+                        <ng-container *ngIf="criteria.compareOperator === compareOperator.GREATER_THAN">
+                            {{ criteria?.value ?? "-" }} {{'BATCH.TO' | translate}}
+                        </ng-container>
+                        <ng-container *ngIf="criteria.compareOperator === compareOperator.LESS_THEN">
+                            {{ criteria?.value ?? "-" }}
+                        </ng-container>
+                    </ng-container>
+                </span>
+            </p>
+            <p><mat-icon
+                    fontSet="material-icons-outlined">location_on</mat-icon><span>{{batch?.location?.displayName ?? "-"}}</span>
+            </p>
+            <p><mat-icon fontSet="material-icons-outlined">payments</mat-icon><span>{{batch?.batchFee ?? "-"}}</span></p>
+        </div>
+    </div>
+    
+</ng-container>

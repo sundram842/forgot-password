@@ -1,0 +1,16 @@
+ @use 'src/styles.scss' as gs;
+
+.frgt-psw-align {
+  @include gs.textRight;
+  & a{
+    cursor: pointer;
+  }
+}
+
+.back-btn {
+  margin: 20px;
+}
+
+.back-btn:hover {
+  background: none;
+}

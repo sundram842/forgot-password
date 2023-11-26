@@ -1,0 +1,24 @@
+<section class='locationSelectionWrap' *ngIf="!locationsLoading">
+    <section class='containerWrap'>
+        <h2>{{"LOCATION.SELECT_A_LOCATION" | translate}}</h2>
+        <div class='locationsWrap'>
+            <mat-button-toggle-group #group="matButtonToggleGroup">
+                <mat-button-toggle disableRipple *ngFor="let location of locations" [checked]="location.isSelected"  
+                (click)="onLocationChange(location?.id)">
+                    {{ location.displayName}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div class='prcd-btn-wrap'>
+            <button [disabled]="!selectedLocation" color="primary" class='proceed-btn' mat-raised-button
+                (click)="proceed()">{{"LOCATION.PROCEED" | translate}}</button>
+        </div>
+    </section>
+</section>
+
+<div *ngIf="locationsLoading" class="pageLoader">
+    <div class="lds-dual-ring"></div>
+</div>
+<div *ngIf="showError">
+    <p>{{ errorMessage }}</p>
+</div>

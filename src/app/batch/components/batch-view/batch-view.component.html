@@ -1,0 +1,174 @@
+<section class="classDetailsWraper" *ngIf="batch">
+  <section class="titleWrap">
+    <button mat-stroked-button routerLink="/batches/batch?.location?.slug">
+      <mat-icon>chevron_left</mat-icon>{{ "BATCH.BACK_TO_CLASSES" | translate }}
+    </button>
+
+    <h2 class="title">{{ "BATCH.CLASS_DETAILS" | translate }}</h2>
+  </section>
+  <section class="detailsWrap">
+    <h2>{{ batch?.title ?? "-" }}</h2>
+    <div class="detailWrap">
+      <div class="calenderSection">
+        <p>
+          <mat-icon fontSet="material-icons-outlined">date_range</mat-icon>
+          <span *ngIf="!batch?.recurring">
+            <ng-container>{{
+              (batch?.startDate | date : "MMM dd, yyyy") ?? "-"
+              }}</ng-container>
+            <span>&nbsp;{{ "BATCH.TO" | translate }}&nbsp;</span>
+            <ng-container>{{
+              (batch?.endDate | date : "MMM dd, yyyy") ?? "-"
+              }}</ng-container>
+          </span>
+          <span *ngIf="batch?.recurring">
+            <ng-container>{{
+              (batch?.recurringPattern?.startDate | date : "MMM dd, yyyy") ??
+              "-"
+              }}</ng-container>
+            <span>&nbsp;{{ "BATCH.TO" | translate }}&nbsp;</span>
+            <ng-container>{{
+              (batch?.recurringPattern?.endDate | date : "MMM dd, yyyy") ?? "-"
+              }}</ng-container>
+          </span>
+        </p>
+        <p>
+          <mat-icon fontSet="material-icons-outlined">schedule</mat-icon>
+          <span>
+            <ng-container *ngIf="batch?.startDate">{{
+              batch?.startDate | date : "hh:mm"
+              }}</ng-container>
+            <span>&nbsp;{{ "BATCH.TO" | translate }}&nbsp;</span>
+            <ng-container *ngIf="batch?.endDate">{{
+              batch?.endDate | date : "hh:mm"
+              }}</ng-container>
+            <ng-container *ngIf="
+                batch?.recurring && batch?.recurringPattern?.frequency === 2
+              ">
+              <app-week-recurrence [specialDays]="batch?.recurringPattern?.repeatOn || []" />
+            </ng-container>
+          </span>
+        </p>
+        <p>
+          <mat-icon fontSet="material-icons-outlined">group</mat-icon>
+          <ng-container *ngIf="batch?.recurring">
+            <ng-container *ngFor="let criteria of eligibilityCriteria">
+              <ng-container *ngIf="criteria.key === eligibility.AGE">
+                <ng-container *ngIf="criteria.compareOperator === eligibility.GRATER_THAN">
+                  {{ "BATCH.AGES" | translate }} {{ criteria?.value }}
+                  {{ "BATCH.TO" | translate }}
+                </ng-container>
+                <ng-container *ngIf="criteria.compareOperator === eligibility.LESS_THAN">
+                  {{ criteria?.value }}
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </p>
+        <p>
+          <mat-icon fontSet="material-icons-outlined">event_available</mat-icon><span>{{ batch?.classesCount ?? "-" }}
+            <ng-container *ngIf="batch?.classesCount">
+              {{ "BATCH.CLASSES" | translate }}
+            </ng-container>
+          </span>
+        </p>
+      </div>
+      <div class="descriptionSection">
+        <h3 class="blockHeading">
+          <ng-container>{{ "BATCH.BY" | translate }} </ng-container>
+          <ng-container *ngIf="batch?.instructor?.displayName">{{
+            batch?.instructor?.displayName ?? "-"
+            }}</ng-container>
+        </h3>
+        <p class="sub-heading">
+          <ng-container>{{ "BATCH.DESCRIPTION" | translate }} </ng-container>
+          <ng-container>{{ batch?.description ?? "-" }}</ng-container>
+        </p>
+        <!--location-->
+        <div class="locationBlock">
+          <h4>{{ "BATCH.LOCATION" | translate }}</h4>
+          <p>
+            <mat-icon fontSet="material-icons-outlined">location_on</mat-icon>
+            <span>
+              <ng-container *ngIf="batch?.location?.displayName">{{
+                batch?.location?.displayName ?? "-"
+                }}</ng-container>
+              <ng-container *ngIf="batch?.location?.streetNumber">{{
+                batch?.location?.streetNumber ?? "-"
+                }}</ng-container>
+              <ng-container *ngIf="batch?.location?.streetName">{{
+                batch?.location?.streetName ?? "-"
+                }}</ng-container>
+              <ng-container *ngIf="batch?.location?.displayName">{{
+                batch?.location?.displayName ?? "-"
+                }}</ng-container>
+              <ng-container *ngIf="batch?.location?.stateCode">{{
+                batch?.location?.stateCode ?? "-"
+                }}</ng-container>
+              <ng-container *ngIf="batch?.location?.postalCode">{{
+                batch?.location?.postalCode ?? "-"
+                }}</ng-container>
+            </span>
+            <a href="#">{{ "BATCH.GET_DIRECTIONS" | translate }}</a>
+          </p>
+        </div>
+        <!--checkout term-->
+        <div class="checkoutTermWrap">
+          <button class="customCheckout-btn" mat-raised-button color="primary">
+            <p>{{ "BATCH.CHECKOUT" | translate }}</p>
+            <p>{{ (batch.batchFee | currency) ?? "-" }}</p>
+          </button>
+          <button class="booktrail-btn" mat-stroked-button>
+            <p>{{ "BATCH.BOOK_TRAIL_CLASS" | translate }}</p>
+            <p>$0.00</p>
+          </button>
+        </div>
+        <!--Applicable offers-->
+        <div class="offersWrap">
+          <p class="sectionTitle">{{ "BATCH.APPLICABLE_OFFERS" | translate }}</p>
+           
+          <div class="plansWrap">
+            <div *ngFor="let plan of batch?.plans">
+              <ng-container *ngFor="let batch of plan?.applicableBatches">
+                <mat-icon>sell</mat-icon>
+                <span class="title">{{ batch?.title }}&nbsp;</span>
+                <ng-container *ngIf="batch?.title">
+                  <mat-icon>add</mat-icon>
+                </ng-container>
+              </ng-container>
+              <span>{{ (plan?.totalPrice | currency) ?? "-" }}</span>
+              <span>{{ (plan?.discountPrice | currency) ?? "-" }}</span>
+            </div>
+            <button  color="primary"> {{ "BATCH.ADD_TO_CHECKOUT" | translate }} </button>
+              <div class="offer">
+                <mat-icon>sell</mat-icon>
+                <div class="sectionTwo">
+                <span class="className">Bollywood on Every Sunday</span><mat-icon>add</mat-icon>
+                <span class="className">Radiant Rhythms Dance</span>&nbsp;&equals;&nbsp;
+                <span class="totalPrice">$540.00</span>
+                <span class="discountPrice className">$350.00</span>
+                <a class="checkout-btn">{{ "BATCH.ADD_TO_CHECKOUT" | translate }}</a>
+                </div>
+              </div>
+              <div class="offer">
+                <mat-icon>sell</mat-icon>
+                <div class="sectionTwo">
+                <span class="className">Bollywood on Every Sunday</span><mat-icon>add</mat-icon>
+                <span class="className">Radiant Rhythms Dance</span>&nbsp;&equals;&nbsp;
+                <span class="totalPrice">$540.00</span>
+                <span class="discountPrice className">$350.00</span>
+                <a class="checkout-btn">{{ "BATCH.ADD_TO_CHECKOUT" | translate }}</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+<div *ngIf="batchLoading" class="pageLoader">
+  <div class="lds-dual-ring"></div>
+</div>
+<div *ngIf="showError">
+  <p>{{ errorMessage }}</p>
+</div>

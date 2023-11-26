@@ -1,0 +1,114 @@
+<section *ngIf="!frgotPassword">
+  <section class="loginSection" id="loginSections">
+    <section class="loginWrap">
+      <form [formGroup]="userForm">
+        <h3 class="display-1">{{"GLOBAL.LOGIN" | translate}}</h3>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{"GLOBAL.USER_NAME" | translate}}</mat-label>
+            <input matInput type="text" formControlName="username">
+          
+            <mat-error *ngIf="f['username'].touched && f['username'].invalid">
+              <mat-error *ngIf="f['username'].hasError('required')">User Id is required</mat-error>
+              <!-- <mat-error
+                *ngIf="f['username'].touched && !f['username'].hasError('required') &&  f['username'].hasError('pattern')">
+                Username must be atleast 1 character,1 number and 1 special character!
+              </mat-error> -->
+              <mat-error
+                *ngIf="f['username'].touched && !f['username'].hasError('required') && !f['username'].hasError('pattern') && !f['username'].hasError('minlength') && f['username'].hasError('maxlength')">
+                Username must not exceed 250 characters
+              </mat-error>
+            </mat-error>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{"GLOBAL.PASSWORD" | translate}}</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="f['password'].touched && f['password'].invalid">
+              <mat-error *ngIf="f['password'].hasError('required')">Password is required</mat-error>
+              <mat-error *ngIf="!f['password'].hasError('required') && f['password'].hasError('pattern')">
+                Password must contain atleast 1 capital,1 number and 1 special character!
+              </mat-error>
+              <mat-error
+                *ngIf="!f['password'].hasError('required') && !f['password'].hasError('pattern') && f['password'].hasError('minlength')">
+                Password must be at least 6 characters
+              </mat-error>
+              <mat-error
+                *ngIf="!f['password'].hasError('required') && !f['password'].hasError('pattern') && !f['password'].hasError('minlength') && f['password'].hasError('maxlength')">
+                Password must not be exceed 20 characters
+              </mat-error>
+              <mat-error class="err-unpw-msz" *ngIf="isPasswordIncorrect">Please Provide Valid Credentials</mat-error>
+              <mat-error class="err-unpw-msz" *ngIf="isUsernameIncorrect">Please Provide Valid Credentials</mat-error>
+            </mat-error>
+          </mat-form-field>
+         
+        </div>
+        <div class="frgt-psw-align">
+          <a (click)="forgotPassword()">{{"GLOBAL.FORGOT_PASSWORD" | translate}}</a>
+        </div>
+        <div class="actions">
+          <button mat-raised-button type="submit" color="primary" [disabled]="!userForm.valid"
+            (click)="onSubmit()">{{"GLOBAL.SUBMIT" | translate}}</button>
+        </div>
+      </form>
+    </section>
+  </section>
+</section>
+
+<section *ngIf="frgotPassword">
+  <section class="loginSection" id="loginSections">
+    <section class="loginWrap-card-adjust">
+      <button class="back-btn" (click)="backtomain()" mat-button routerLink="../">
+        <mat-icon>arrow_back</mat-icon>
+        Back
+      </button>
+      <form [formGroup]="PuserForm">
+        <h3 class="display-1">{{"GLOBAL.LOGIN" | translate}}</h3>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{"GLOBAL.USER_NAME" | translate}}</mat-label>
+            <input matInput type="text" formControlName="Pusername">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="g['Pusername'].touched && g['Pusername'].invalid">
+              <mat-error *ngIf="g['Pusername'].hasError('required')">User Id is required</mat-error>
+              <mat-error
+                *ngIf="g['Pusername'].touched && !g['Pusername'].hasError('required') &&  g['Pusername'].hasError('pattern')">
+                Username must be atleast 1 character,1 number and 1 special character!
+              </mat-error>
+              <mat-error
+                *ngIf="g['Pusername'].touched && !g['Pusername'].hasError('required') && !g['Pusername'].hasError('pattern') && !g['Pusername'].hasError('minlength') && g['Pusername'].hasError('maxlength')">
+                Username must not exceed 250 characters
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>{{"GLOBAL.USER_NAME" | translate}}</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="username">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="f['username'].touched && f['username'].invalid">
+              <mat-error *ngIf="f['username'].hasError('required')">User Id is required</mat-error>
+              <mat-error
+                *ngIf="f['username'].touched && !f['username'].hasError('required') &&  f['username'].hasError('pattern')">
+                Username must be atleast 1 character,1 number and 1 special character!
+              </mat-error>
+              <mat-error
+                *ngIf="f['username'].touched && !f['username'].hasError('required') && !f['username'].hasError('pattern') && !f['username'].hasError('minlength') && f['username'].hasError('maxlength')">
+                Username must not exceed 250 characters
+              </mat-error>
+            </mat-error>
+          </mat-form-field> -->
+        </div>
+        <div class="actions">
+          <button mat-raised-button type="submit" color="primary" [disabled]="!PuserForm.valid"
+            (click)="onSubmit()">{{"GLOBAL.SUBMIT" | translate}}</button>
+        </div>
+      </form>
+    </section>
+  </section>
+</section>

@@ -1,0 +1,33 @@
+@import 'colour-palette-repo.scss';
+
+@function create-light-theme($primary, $accent, $warn) {
+    $theme-primary: mat.define-palette($primary, 500);
+    $them-accent  : mat.define-palette($accent, 500);
+    $them-warn    : mat.define-palette($warn, 500);
+    $theme        : mat.define-light-theme((color: (primary: $theme-primary, accent: $them-accent, warn: $them-warn)));
+    @return $theme;
+}
+
+$rudra : create-light-theme($md-orangePrimary, $md-myaccent, $md-warn);
+$blue  :create-light-theme($md-primaryBlue, $md-myaccent, $md-warn);
+$maroon:create-light-theme($md-primaryMaroon, $md-myaccent, $md-warn);
+$violet: create-light-theme($md-violet, $md-myaccent, $md-warn);
+//custom typography
+$my-typography: mat.define-typography-config($font-family: var(--custom-font));
+@include mat.typography-hierarchy($my-typography);
+
+
+.orange-theme {
+    @include mat.all-component-themes($rudra);
+}
+
+.blue-theme {
+    @include mat.all-component-themes($blue);
+}
+
+.maroon-theme {
+    @include mat.all-component-themes($maroon);
+}
+.voilet-theme {
+    @include mat.all-component-themes($violet);
+}

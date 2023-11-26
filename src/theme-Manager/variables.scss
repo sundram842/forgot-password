@@ -1,0 +1,80 @@
+:root {
+    --color1            : #FFFFFF;
+    --color2            : #000000;
+    --color4            : #C2C2C2;
+    --color5            : #F5F5F5;
+    --color6            : #7B7B7B;
+    --color7            : #3B3B3B;
+    --color8            : #202124;
+    --color9            : #606060;
+    --color10           : #545454;
+    --color11           : #b2b2b2;
+    --color12           : #707070;
+    --color13           : #e1e1e1;
+    --color14           : #e8e8e8;
+    --color16           : #9a9a9a;
+    --color17           : #8f8f8f;
+    --color18           : #fffaf2;
+    --color19           : #4A4A4A;
+    --color20           : #D5D5D5;
+    --color21           : #E4CB9E;
+    --color22           : #f8f8f8;
+    --color23           : #707070B3;
+    --scrolltrack       : #f0f0f0;
+    --scrollthumb       : #888888;
+    --scrollhover       : #555555;
+    --greenBackground   : #E4FFD9;
+    --greenText         : #08951F;
+    --blueText          : #0665D5;
+    --blueBackground    : #DFF1FF;
+    --redBackground     : #FFEEEE;
+    --redText           : #FF3636;
+    --orangeBackground  : #FFEDD9;
+    --orangeText        : #FF6600;
+    --grayBackground    : #ebebeb;
+    --saffranBackground : #FFF1E1;
+    --saffranText       : #D87300;
+    --overlay           : rgba(0, 0, 0, 0.3);
+    --custom-border     : rgba(255, 165, 0, 0.5);
+    --headerShadow      : 0px 3px 12px #00000029;
+    --actionwrapShadow  : 2px 3px 12px #00000029;
+    --headerHeight      : 86px;
+    --emailboxshadow    : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --dashboard-shadow  : 0px 3px 6px #00000029;
+    --notificationFooter: 0px -3px 2px #0000000F;
+    --rewardbox         : 0px 3px 6px #0000001A;
+    --popupFooterShadow : 0px -1px 6px #00000029;
+  
+    // define cutom boxshadows
+    --shadow1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --shadow2: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --shadow3: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    --shadow4: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    --shadow5: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    
+      // custom fonts
+      --custom-font: 'DM Sans', sans-serif;
+  
+  }
+  
+  /* root end*/
+  
+  /* sass variables,arrays section */
+  
+  $font-weights  : 100 300 400 500 700 900;
+  $font-sizes    :14px 16px 24px 20px 32px 30px 18px 12px 40px 26px 17px 15px;
+  $mobile_screen :540px;
+  $tab_screen    :1024px;
+  /* sass variables arrays section End*/
+
+  
+// @mixin themeColors($theme) {
+//   $color-config: mat.get-color-config($theme);
+//   $palettes: 'primary', 'accent', 'warn';
+//   @each $palette in $palettes {
+//     $palette-variable: map.get($color-config, $palette);
+//     $color-variable: mat.get-color-from-palette($palette-variable, 500);
+//     --#{$palette}-color: #{$color-variable};
+//   }
+// }

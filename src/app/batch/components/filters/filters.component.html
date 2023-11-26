@@ -1,0 +1,65 @@
+<section class='filtersWrap'>
+<div class="countWrap">
+  <ng-container *ngIf="classesCount"
+    ><p>{{ classesCount }}</p>
+    <span>{{ "BATCH.CLASSES_FOUND" | translate }}</span></ng-container
+  >
+  <ng-container *ngIf="!classesCount"
+    >
+    <!-- <span></span> -->
+    <span>{{"BATCH.NO"| translate}} {{ "BATCH.CLASSES_FOUND" | translate }}</span></ng-container
+  >
+</div>
+<div class="filters">
+  <form [formGroup]="filterForm">
+    <mat-form-field>
+      <mat-label>{{ "BATCH.ALL_DATES" | translate }}</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input
+          matStartDate
+          formControlName="startDate"
+          placeholder="Start date"
+        />
+        <input matEndDate formControlName="endDate" placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "BATCH.LOCATION" | translate }}</mat-label>
+      <mat-select
+        name="food"
+        formControlName="location"
+        [disabled]="!showError"
+      >
+        <mat-option *ngFor="let loc of locations" [value]="loc">
+          {{ loc.slug }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "BATCH.AGE" | translate }}</mat-label>
+      <mat-select
+        name="food"
+        formControlName="ageRange"
+        [disabled]="!showError"
+      >
+        <mat-option *ngFor="let age of ageGroups" [value]="age">
+          {{ age.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-stroked-button class="apply-btn" (click)="filterValue()">
+      {{ "BATCH.APPLY" | translate }}
+    </button>
+    <button mat-button class="clear-btn" (click)="reset()">
+      {{ "BATCH.CLEAR" | translate }}
+    </button>
+  </form>
+</div>
+</section>
